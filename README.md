@@ -1,6 +1,6 @@
 # Aspose.BarCode Cloud SDK for Dart
 
-[![Dart test](https://github.com/aspose-barcode-cloud/aspose-barcode-cloud-dart/actions/workflows/dart.yml/badge.svg?branch=main)](https://github.com/aspose-barcode-cloud/aspose-barcode-cloud-dart/actions/workflows/dart.yml)
+[![Dart test](https://github.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/actions/workflows/dart.yml/badge.svg?branch=main)](https://github.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/actions/workflows/dart.yml)
 
 - API version: 4.0
 - SDK version: 4.26.3
