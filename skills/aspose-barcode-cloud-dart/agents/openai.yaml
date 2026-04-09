@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aspose.BarCode Cloud Dart"
+  short_description: "Write Dart barcode code with Aspose Cloud"
+  default_prompt: "Use $aspose-barcode-cloud-dart to write or update Dart or Flutter code that generates, recognizes, or scans barcodes with Aspose.BarCode Cloud."
