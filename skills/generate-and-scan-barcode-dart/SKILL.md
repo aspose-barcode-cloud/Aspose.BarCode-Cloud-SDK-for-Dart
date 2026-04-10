@@ -1,9 +1,9 @@
 ---
-name: aspose-barcode-cloud-dart
+name: generate-and-scan-barcode-dart
 description: Write or update Dart or Flutter code that uses the Aspose BarCode Cloud SDK (`package:aspose_barcode_cloud/aspose_barcode_cloud.dart`; pub package `aspose_barcode_cloud`) to generate, recognize, or scan barcodes through Aspose's cloud REST API. Use this skill whenever the user wants barcode work in Dart or Flutter, touches files under `submodules/dart`, or mentions `ApiClient`, `Configuration`, `GenerateApi`, `RecognizeApi`, `ScanApi`, `GenerateParams`, `RecognizeBase64Request`, or `ScanBase64Request`. The SDK has several easy-to-miss idioms - `Uint8List` return values, `ApiClient(Configuration(...))` setup, GET recognize or scan requiring a public `fileUrl`, base64 methods expecting caller-encoded data, `Configuration.fromEnv` only reading `ACCESS_TOKEN`, and repo scripts that should run through WSL on Windows - so consult this skill instead of guessing.
 ---
 
-# Aspose.BarCode Cloud SDK for Dart
+# Generate and scan barcode in Dart
 
 The Dart SDK is a thin generated client over the Aspose BarCode Cloud REST API. Most tasks boil down to choosing the right API class (`GenerateApi`, `RecognizeApi`, `ScanApi`), picking the right transport variant (GET, body or base64, or multipart), and setting up `ApiClient(Configuration(...))` correctly.
 

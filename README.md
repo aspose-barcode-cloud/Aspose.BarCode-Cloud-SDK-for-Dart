@@ -28,7 +28,7 @@ To use these SDKs, you will need Client Id and Client Secret which can be looked
 
 ## AI Agent Skills
 
-This repository includes an AI-agent skill in [`skills/aspose-barcode-cloud-dart/SKILL.md`](skills/aspose-barcode-cloud-dart/SKILL.md). Point your coding agent to it when working with this SDK so it follows the repo workflow and SDK-specific API patterns.
+This repository includes an AI-agent skill in [`skills/generate-and-scan-barcode-dart/SKILL.md`](skills/generate-and-scan-barcode-dart/SKILL.md). Point your coding agent to it when working with this SDK so it follows the repo workflow and SDK-specific API patterns.
 
 ## Prerequisites
 
@@ -146,4 +146,3 @@ Class | Method | HTTP request | Description
 - [RecognizeBase64Request](doc/models/RecognizeBase64Request.md)
 - [RegionPoint](doc/models/RegionPoint.md)
 - [ScanBase64Request](doc/models/ScanBase64Request.md)
-
