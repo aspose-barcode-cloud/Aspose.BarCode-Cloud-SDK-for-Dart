@@ -26,6 +26,10 @@ This repository contains Aspose.BarCode Cloud SDK for Dart source code. This SDK
 
 To use these SDKs, you will need Client Id and Client Secret which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/applications) (free registration in Aspose Cloud is required for this).
 
+## AI Agent Skills
+
+This repository includes an AI-agent skill in [`skills/generate-and-scan-barcode-dart/SKILL.md`](skills/generate-and-scan-barcode-dart/SKILL.md). Point your coding agent to it when working with this SDK so it follows the repo workflow and SDK-specific API patterns.
+
 ## Prerequisites
 
 To use Aspose.BarCode Cloud SDK for Dart you need to register an account with [Aspose Cloud](https://www.aspose.cloud) and lookup/create Client Secret and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/applications). There is a free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/).
@@ -142,4 +146,3 @@ Class | Method | HTTP request | Description
 - [RecognizeBase64Request](doc/models/RecognizeBase64Request.md)
 - [RegionPoint](doc/models/RegionPoint.md)
 - [ScanBase64Request](doc/models/ScanBase64Request.md)
-
