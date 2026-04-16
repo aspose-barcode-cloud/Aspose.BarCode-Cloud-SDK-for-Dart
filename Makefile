@@ -23,8 +23,13 @@ format:
 fix: init
 	dart fix --apply
 
+.PHONY: format-doc
+format-doc:
+	# Trim trailing empty line
+	sed -i -e '$${/^$$/d;}' README.md
+
 .PHONY: after-gen
-after-gen: fix insert-example
+after-gen: fix insert-example format-doc
 	./scripts/annotate-deprecated.bash
 	@dart format .
 
