@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.26.6
+
+* June 2026 Release
+
 ## 4.26.5
 
 * May 2026 Release

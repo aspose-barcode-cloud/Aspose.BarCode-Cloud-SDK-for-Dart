@@ -12,7 +12,7 @@ class GenerateApi {
   final ApiClient _apiClient;
 
   ///
-  /// Generate barcode using GET request with parameters in route and query string.
+  /// Generate a barcode using a GET request with parameters in the route and query string.
   ///
   Future<Uint8List> generate(EncodeBarcodeType barcodeType, String data,
       {EncodeDataType? dataType,
@@ -24,7 +24,26 @@ class GenerateApi {
       double? resolution,
       double? imageHeight,
       double? imageWidth,
-      int? rotationAngle}) async {
+      int? rotationAngle,
+      QREncodeMode? qrEncodeMode,
+      QRErrorLevel? qrErrorLevel,
+      QRVersion? qrVersion,
+      ECIEncodings? qrECIEncoding,
+      double? qrAspectRatio,
+      MicroQRVersion? microQRVersion,
+      RectMicroQRVersion? rectMicroQrVersion,
+      Code128EncodeMode? code128EncodeMode,
+      Pdf417EncodeMode? pdf417EncodeMode,
+      Pdf417ErrorLevel? pdf417ErrorLevel,
+      bool? pdf417Truncate,
+      int? pdf417Columns,
+      int? pdf417Rows,
+      double? pdf417AspectRatio,
+      ECIEncodings? pdf417ECIEncoding,
+      bool? pdf417IsReaderInitialization,
+      MacroCharacter? pdf417MacroCharacters,
+      bool? pdf417IsLinked,
+      bool? pdf417IsCode128Emulation}) async {
     // ignore: prefer_final_locals
     Object? postBody;
 
@@ -77,6 +96,82 @@ class GenerateApi {
       queryParams.addAll(convertParametersForCollectionFormat(
           "", "rotationAngle", rotationAngle));
     }
+    if (qrEncodeMode != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "qrEncodeMode", qrEncodeMode));
+    }
+    if (qrErrorLevel != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "qrErrorLevel", qrErrorLevel));
+    }
+    if (qrVersion != null) {
+      queryParams.addAll(
+          convertParametersForCollectionFormat("", "qrVersion", qrVersion));
+    }
+    if (qrECIEncoding != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "qrECIEncoding", qrECIEncoding));
+    }
+    if (qrAspectRatio != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "qrAspectRatio", qrAspectRatio));
+    }
+    if (microQRVersion != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "microQRVersion", microQRVersion));
+    }
+    if (rectMicroQrVersion != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "rectMicroQrVersion", rectMicroQrVersion));
+    }
+    if (code128EncodeMode != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "code128EncodeMode", code128EncodeMode));
+    }
+    if (pdf417EncodeMode != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417EncodeMode", pdf417EncodeMode));
+    }
+    if (pdf417ErrorLevel != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417ErrorLevel", pdf417ErrorLevel));
+    }
+    if (pdf417Truncate != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417Truncate", pdf417Truncate));
+    }
+    if (pdf417Columns != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417Columns", pdf417Columns));
+    }
+    if (pdf417Rows != null) {
+      queryParams.addAll(
+          convertParametersForCollectionFormat("", "pdf417Rows", pdf417Rows));
+    }
+    if (pdf417AspectRatio != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417AspectRatio", pdf417AspectRatio));
+    }
+    if (pdf417ECIEncoding != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417ECIEncoding", pdf417ECIEncoding));
+    }
+    if (pdf417IsReaderInitialization != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417IsReaderInitialization", pdf417IsReaderInitialization));
+    }
+    if (pdf417MacroCharacters != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417MacroCharacters", pdf417MacroCharacters));
+    }
+    if (pdf417IsLinked != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417IsLinked", pdf417IsLinked));
+    }
+    if (pdf417IsCode128Emulation != null) {
+      queryParams.addAll(convertParametersForCollectionFormat(
+          "", "pdf417IsCode128Emulation", pdf417IsCode128Emulation));
+    }
 
     final List<String> contentTypes = [];
 
@@ -106,7 +201,7 @@ class GenerateApi {
   }
 
   ///
-  /// Generate barcode using POST request with parameters in body in json or xml format.
+  /// Generate a barcode using a POST request with parameters in the request body in JSON or XML format.
   ///
   Future<Uint8List> generateBody(GenerateParams generateParams) async {
     // ignore: prefer_final_locals
@@ -155,7 +250,7 @@ class GenerateApi {
   }
 
   ///
-  /// Generate barcode using POST request with parameters in multipart form.
+  /// Generate a barcode using a POST request with parameters in a multipart form.
   ///
   Future<Uint8List> generateMultipart(
       EncodeBarcodeType barcodeType, String data,
@@ -168,7 +263,26 @@ class GenerateApi {
       double? resolution,
       double? imageHeight,
       double? imageWidth,
-      int? rotationAngle}) async {
+      int? rotationAngle,
+      QREncodeMode? qrEncodeMode,
+      QRErrorLevel? qrErrorLevel,
+      QRVersion? qrVersion,
+      ECIEncodings? qrECIEncoding,
+      double? qrAspectRatio,
+      MicroQRVersion? microQRVersion,
+      RectMicroQRVersion? rectMicroQrVersion,
+      Code128EncodeMode? code128EncodeMode,
+      Pdf417EncodeMode? pdf417EncodeMode,
+      Pdf417ErrorLevel? pdf417ErrorLevel,
+      bool? pdf417Truncate,
+      int? pdf417Columns,
+      int? pdf417Rows,
+      double? pdf417AspectRatio,
+      ECIEncodings? pdf417ECIEncoding,
+      bool? pdf417IsReaderInitialization,
+      MacroCharacter? pdf417MacroCharacters,
+      bool? pdf417IsLinked,
+      bool? pdf417IsCode128Emulation}) async {
     // ignore: prefer_final_locals
     Object? postBody;
 
@@ -231,6 +345,88 @@ class GenerateApi {
 
     if (rotationAngle != null) {
       mp.fields['rotationAngle'] = [parameterToString(rotationAngle)];
+    }
+
+    if (qrEncodeMode != null) {
+      mp.fields['qrEncodeMode'] = [parameterToString(qrEncodeMode)];
+    }
+
+    if (qrErrorLevel != null) {
+      mp.fields['qrErrorLevel'] = [parameterToString(qrErrorLevel)];
+    }
+
+    if (qrVersion != null) {
+      mp.fields['qrVersion'] = [parameterToString(qrVersion)];
+    }
+
+    if (qrECIEncoding != null) {
+      mp.fields['qrECIEncoding'] = [parameterToString(qrECIEncoding)];
+    }
+
+    if (qrAspectRatio != null) {
+      mp.fields['qrAspectRatio'] = [parameterToString(qrAspectRatio)];
+    }
+
+    if (microQRVersion != null) {
+      mp.fields['microQRVersion'] = [parameterToString(microQRVersion)];
+    }
+
+    if (rectMicroQrVersion != null) {
+      mp.fields['rectMicroQrVersion'] = [parameterToString(rectMicroQrVersion)];
+    }
+
+    if (code128EncodeMode != null) {
+      mp.fields['code128EncodeMode'] = [parameterToString(code128EncodeMode)];
+    }
+
+    if (pdf417EncodeMode != null) {
+      mp.fields['pdf417EncodeMode'] = [parameterToString(pdf417EncodeMode)];
+    }
+
+    if (pdf417ErrorLevel != null) {
+      mp.fields['pdf417ErrorLevel'] = [parameterToString(pdf417ErrorLevel)];
+    }
+
+    if (pdf417Truncate != null) {
+      mp.fields['pdf417Truncate'] = [parameterToString(pdf417Truncate)];
+    }
+
+    if (pdf417Columns != null) {
+      mp.fields['pdf417Columns'] = [parameterToString(pdf417Columns)];
+    }
+
+    if (pdf417Rows != null) {
+      mp.fields['pdf417Rows'] = [parameterToString(pdf417Rows)];
+    }
+
+    if (pdf417AspectRatio != null) {
+      mp.fields['pdf417AspectRatio'] = [parameterToString(pdf417AspectRatio)];
+    }
+
+    if (pdf417ECIEncoding != null) {
+      mp.fields['pdf417ECIEncoding'] = [parameterToString(pdf417ECIEncoding)];
+    }
+
+    if (pdf417IsReaderInitialization != null) {
+      mp.fields['pdf417IsReaderInitialization'] = [
+        parameterToString(pdf417IsReaderInitialization)
+      ];
+    }
+
+    if (pdf417MacroCharacters != null) {
+      mp.fields['pdf417MacroCharacters'] = [
+        parameterToString(pdf417MacroCharacters)
+      ];
+    }
+
+    if (pdf417IsLinked != null) {
+      mp.fields['pdf417IsLinked'] = [parameterToString(pdf417IsLinked)];
+    }
+
+    if (pdf417IsCode128Emulation != null) {
+      mp.fields['pdf417IsCode128Emulation'] = [
+        parameterToString(pdf417IsCode128Emulation)
+      ];
     }
 
     postBody = mp;

@@ -14,7 +14,7 @@ class RecognizeApi {
   final ApiClient _apiClient;
 
   ///
-  /// Recognize barcode from file on server in the Internet using GET requests with parameter in query string. For recognizing files from your hard drive use &#x60;recognize-body&#x60; or &#x60;recognize-multipart&#x60; endpoints instead.
+  /// Recognize a barcode from a file on an Internet server using a GET request with a query string parameter. For recognizing files from your hard drive, use &#x60;recognize-body&#x60; or &#x60;recognize-multipart&#x60; endpoints instead.
   ///
   Future<BarcodeResponseList> recognize(
       DecodeBarcodeType barcodeType, String fileUrl,
@@ -72,7 +72,7 @@ class RecognizeApi {
   }
 
   ///
-  /// Recognize barcode from file in request body using POST requests with parameters in body in json or xml format.
+  /// Recognize a barcode from a file in the request body using a POST request with JSON or XML body parameters.
   ///
   Future<BarcodeResponseList> recognizeBase64(
       RecognizeBase64Request recognizeBase64Request) async {
@@ -123,7 +123,7 @@ class RecognizeApi {
   }
 
   ///
-  /// Recognize barcode from file in request body using POST requests with parameters in multipart form.
+  /// Recognize a barcode from a file in the request body using a POST request with multipart form parameters.
   ///
   Future<BarcodeResponseList> recognizeMultipart(
       DecodeBarcodeType barcodeType, Uint8List fileBytes,

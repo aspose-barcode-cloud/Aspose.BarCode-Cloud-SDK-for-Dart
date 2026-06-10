@@ -22,7 +22,7 @@ Future<void> main() async {
   final generateApi = GenerateApi(apiClient);
 
   final file = File(
-    "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Code39.jpeg",
+    "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}QrCustom.jpeg",
   );
 
   final imageParams = BarcodeImageParams()
@@ -31,8 +31,17 @@ Future<void> main() async {
     ..imageFormat = BarcodeImageFormat.Jpeg
     ..rotationAngle = 90;
 
-  final generateParams = GenerateParams(EncodeBarcodeType.Code39,
-      EncodeData("Aspose", EncodeDataType.StringData), imageParams);
+  final generateParams = GenerateParams(
+      EncodeBarcodeType.QR,
+      EncodeData("Aspose", EncodeDataType.StringData),
+      imageParams,
+      QrParams(
+        QREncodeMode.Auto,
+        QRErrorLevel.LevelM,
+        QRVersion.Auto,
+        null,
+        0.75,
+      ));
 
   final Uint8List response = await generateApi.generateBody(generateParams);
 

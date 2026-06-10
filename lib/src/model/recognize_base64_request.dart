@@ -2,9 +2,9 @@
 // ignore_for_file: deprecated_member_use_from_same_package
 import '../../aspose_barcode_cloud.dart';
 
-/// Barcode recognize request
+/// Barcode recognition request.
 class RecognizeBase64Request {
-  /// Array of decode types to find on barcode
+  /// Array of barcode decode types to find.
 
   late List<DecodeBarcodeType> barcodeTypes;
 

@@ -5,7 +5,7 @@
 ```dart
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 ```
-Types of data can be encoded to barcode
+Types of data that can be encoded into a barcode.
 ## Allowable values
 
 * **EncodeDataType.stringData**

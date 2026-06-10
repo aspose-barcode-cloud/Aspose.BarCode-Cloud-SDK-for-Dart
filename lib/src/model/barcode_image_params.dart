@@ -2,7 +2,7 @@
 // ignore_for_file: deprecated_member_use_from_same_package
 import '../../aspose_barcode_cloud.dart';
 
-/// Barcode image optional parameters
+/// Optional barcode image parameters.
 class BarcodeImageParams {
   /// imageFormat
   //enum imageFormatEnum {  Png,  Jpeg,  Svg,  Tiff,  Gif,  };
@@ -12,11 +12,11 @@ class BarcodeImageParams {
   //enum textLocationEnum {  Below,  Above,  None,  };
   CodeLocation? textLocation;
 
-  /// Specify the displaying bars and content Color. Value: Color name from https://reference.aspose.com/drawing/net/system.drawing/color/ or ARGB value started with #. For example: AliceBlue or #FF000000 Default value: Black.
+  /// Specify the display color for bars and content. Value: Color name from https://reference.aspose.com/drawing/net/system.drawing/color/ or ARGB value starting with #. For example: AliceBlue or #FF000000. Default value: Black.
 
   String? foregroundColor;
 
-  /// Background color of the barcode image. Value: Color name from https://reference.aspose.com/drawing/net/system.drawing/color/ or ARGB value started with #. For example: AliceBlue or #FF000000 Default value: White.
+  /// Background color of the barcode image. Value: Color name from https://reference.aspose.com/drawing/net/system.drawing/color/ or ARGB value starting with #. For example: AliceBlue or #FF000000. Default value: White.
 
   String? backgroundColor;
 
@@ -24,19 +24,19 @@ class BarcodeImageParams {
   //enum unitsEnum {  Pixel,  Point,  Inch,  Millimeter,  };
   GraphicsUnit? units;
 
-  /// Resolution of the BarCode image. One value for both dimensions. Default value: 96 dpi. Decimal separator is dot.
+  /// Resolution of the barcode image. One value for both dimensions. Default value: 96 dpi. Decimal separator is a dot.
 
   double? resolution;
 
-  /// Height of the barcode image in given units. Default units: pixel. Decimal separator is dot.
+  /// Height of the barcode image in the specified units. Default units: pixels. Decimal separator is a dot.
 
   double? imageHeight;
 
-  /// Width of the barcode image in given units. Default units: pixel. Decimal separator is dot.
+  /// Width of the barcode image in the specified units. Default units: pixels. Decimal separator is a dot.
 
   double? imageWidth;
 
-  /// BarCode image rotation angle, measured in degree, e.g. RotationAngle = 0 or RotationAngle = 360 means no rotation. If RotationAngle NOT equal to 90, 180, 270 or 0, it may increase the difficulty for the scanner to read the image. Default value: 0.
+  /// Barcode image rotation angle, measured in degrees. For example, RotationAngle = 0 or RotationAngle = 360 means no rotation. If RotationAngle is not equal to 90, 180, 270, or 0, it may increase the difficulty for the scanner to read the image. Default value: 0.
 
   int? rotationAngle;
 

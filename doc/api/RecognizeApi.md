@@ -9,24 +9,24 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**recognize**](RecognizeApi.md#recognize) | **GET** /barcode/recognize | Recognize barcode from file on server in the Internet using GET requests with parameter in query string. For recognizing files from your hard drive use &#x60;recognize-body&#x60; or &#x60;recognize-multipart&#x60; endpoints instead.
-[**recognizeBase64**](RecognizeApi.md#recognizeBase64) | **POST** /barcode/recognize-body | Recognize barcode from file in request body using POST requests with parameters in body in json or xml format.
-[**recognizeMultipart**](RecognizeApi.md#recognizeMultipart) | **POST** /barcode/recognize-multipart | Recognize barcode from file in request body using POST requests with parameters in multipart form.
+[**recognize**](RecognizeApi.md#recognize) | **GET** /barcode/recognize | Recognize a barcode from a file on an Internet server using a GET request with a query string parameter. For recognizing files from your hard drive, use &#x60;recognize-body&#x60; or &#x60;recognize-multipart&#x60; endpoints instead.
+[**recognizeBase64**](RecognizeApi.md#recognizeBase64) | **POST** /barcode/recognize-body | Recognize a barcode from a file in the request body using a POST request with JSON or XML body parameters.
+[**recognizeMultipart**](RecognizeApi.md#recognizeMultipart) | **POST** /barcode/recognize-multipart | Recognize a barcode from a file in the request body using a POST request with multipart form parameters.
 
 
 # **recognize**
 > BarcodeResponseList recognize(barcodeType, fileUrl, recognitionMode, recognitionImageKind)
 
-Recognize barcode from file on server in the Internet using GET requests with parameter in query string. For recognizing files from your hard drive use `recognize-body` or `recognize-multipart` endpoints instead.
+Recognize a barcode from a file on an Internet server using a GET request with a query string parameter. For recognizing files from your hard drive, use `recognize-body` or `recognize-multipart` endpoints instead.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ---- | ---- | ------------ | -----
- **barcodeType** | [**DecodeBarcodeType**](.md)| Type of barcode to recognize | 
- **fileUrl** | **String**| Url to barcode image | 
- **recognitionMode** | [**RecognitionMode**](.md)| Recognition mode | [optional] 
- **recognitionImageKind** | [**RecognitionImageKind**](.md)| Image kind for recognition | [optional] 
+ **barcodeType** | [**DecodeBarcodeType**](.md)| Type of barcode to recognize. | 
+ **fileUrl** | **String**| URL to the barcode image. | 
+ **recognitionMode** | [**RecognitionMode**](.md)| Recognition mode. | [optional] 
+ **recognitionImageKind** | [**RecognitionImageKind**](.md)| Image kind for recognition. | [optional] 
 
 ### Return type
 
@@ -45,13 +45,13 @@ Name | Type | Description  | Notes
 # **recognizeBase64**
 > BarcodeResponseList recognizeBase64(recognizeBase64Request)
 
-Recognize barcode from file in request body using POST requests with parameters in body in json or xml format.
+Recognize a barcode from a file in the request body using a POST request with JSON or XML body parameters.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ---- | ---- | ------------ | -----
- **recognizeBase64Request** | [**RecognizeBase64Request**](RecognizeBase64Request.md)| Barcode recognition request | 
+ **recognizeBase64Request** | [**RecognizeBase64Request**](RecognizeBase64Request.md)| Barcode recognition request. | 
 
 ### Return type
 
@@ -70,14 +70,14 @@ Name | Type | Description  | Notes
 # **recognizeMultipart**
 > BarcodeResponseList recognizeMultipart(barcodeType, file, recognitionMode, recognitionImageKind)
 
-Recognize barcode from file in request body using POST requests with parameters in multipart form.
+Recognize a barcode from a file in the request body using a POST request with multipart form parameters.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ---- | ---- | ------------ | -----
  **barcodeType** | [**DecodeBarcodeType**](DecodeBarcodeType.md)|  | 
- **file** | **MultipartFile****MultipartFile**| Barcode image file | 
+ **file** | **MultipartFile****MultipartFile**| Barcode image file. | 
  **recognitionMode** | [**RecognitionMode**](RecognitionMode.md)|  | [optional] 
  **recognitionImageKind** | [**RecognitionImageKind**](RecognitionImageKind.md)|  | [optional] 
 

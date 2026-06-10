@@ -2,7 +2,7 @@
 // ignore_for_file: deprecated_member_use_from_same_package
 import '../../aspose_barcode_cloud.dart';
 
-/// Represents information about barcode.
+/// Represents information about a barcode.
 class BarcodeResponse {
   /// Barcode data.
 
@@ -12,11 +12,11 @@ class BarcodeResponse {
 
   String? type;
 
-  /// Region with barcode.
+  /// Region with the barcode.
 
   List<RegionPoint>? region;
 
-  /// Checksum of barcode.
+  /// Checksum of the barcode.
 
   String? checksum;
 
