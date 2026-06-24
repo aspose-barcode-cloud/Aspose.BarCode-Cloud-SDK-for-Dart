@@ -4,7 +4,7 @@ import '../../aspose_barcode_cloud.dart';
 
 /// Data to encode in a barcode.
 class EncodeData {
-  /// dataType
+  /// Type of data to encode. Default value: StringData.
   //enum dataTypeEnum {  StringData,  Base64Bytes,  HexBytes,  };
   EncodeDataType? dataType;
 

@@ -4,11 +4,11 @@ import '../../aspose_barcode_cloud.dart';
 
 /// Optional PDF417 barcode generation parameters. Applies to Pdf417, MacroPdf417, MicroPdf417, and GS1MicroPdf417 barcode types.
 class Pdf417Params {
-  /// pdf417EncodeMode
+  /// PDF417 barcode encode mode.
   //enum pdf417EncodeModeEnum {  Auto,  Binary,  ECI,  Extended,  };
   Pdf417EncodeMode? pdf417EncodeMode;
 
-  /// pdf417ErrorLevel
+  /// PDF417 barcode error correction level.
   //enum pdf417ErrorLevelEnum {  Level0,  Level1,  Level2,  Level3,  Level4,  Level5,  Level6,  Level7,  Level8,  };
   Pdf417ErrorLevel? pdf417ErrorLevel;
 
@@ -28,7 +28,7 @@ class Pdf417Params {
 
   double? pdf417AspectRatio;
 
-  /// pdf417ECIEncoding
+  /// ECI encoding for PDF417 barcode data.
   //enum pdf417ECIEncodingEnum {  NONE,  ISO_8859_1,  ISO_8859_2,  ISO_8859_3,  ISO_8859_4,  ISO_8859_5,  ISO_8859_6,  ISO_8859_7,  ISO_8859_8,  ISO_8859_9,  ISO_8859_10,  ISO_8859_11,  ISO_8859_13,  ISO_8859_14,  ISO_8859_15,  ISO_8859_16,  Shift_JIS,  Win1250,  Win1251,  Win1252,  Win1256,  UTF16BE,  UTF8,  US_ASCII,  Big5,  GB2312,  EUC_KR,  GBK,  GB18030,  UTF16LE,  UTF32BE,  UTF32LE,  INVARIANT,  BINARY,  };
   ECIEncodings? pdf417ECIEncoding;
 
@@ -36,7 +36,7 @@ class Pdf417Params {
 
   bool? pdf417IsReaderInitialization;
 
-  /// pdf417MacroCharacters
+  /// Macro character to prepend (structured append).
   //enum pdf417MacroCharactersEnum {  None,  Macro05,  Macro06,  };
   MacroCharacter? pdf417MacroCharacters;
 

@@ -8,7 +8,7 @@ class ApiErrorResponse {
 
   late String requestId;
 
-  /// error
+  /// Gets or sets error.
 
   late ApiError error;
 

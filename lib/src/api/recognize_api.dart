@@ -148,22 +148,17 @@ class RecognizeApi {
 
     MultipartRequestPlus mp =
         MultipartRequestPlus('POST', Uri.parse(requestPath));
-
     mp.fields['barcodeType'] = [parameterToString(barcodeType)];
-
     mp.files.add(MultipartFile.fromBytes("file", fileBytes.toList(),
         filename: "somefile.xyz"));
-
     if (recognitionMode != null) {
       mp.fields['recognitionMode'] = [parameterToString(recognitionMode)];
     }
-
     if (recognitionImageKind != null) {
       mp.fields['recognitionImageKind'] = [
         parameterToString(recognitionImageKind)
       ];
     }
-
     postBody = mp;
 
     final response = await _apiClient.invokeAPI(
