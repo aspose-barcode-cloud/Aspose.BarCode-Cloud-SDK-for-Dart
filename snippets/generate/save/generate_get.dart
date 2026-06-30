@@ -24,7 +24,12 @@ Future<void> main() async {
       "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Code128.jpeg";
 
   final Uint8List response = await generateApi.generate(
-      EncodeBarcodeType.Code128, "Aspose.BarCode.Cloud");
+    EncodeBarcodeType.Code128,
+    "Aspose.BarCode.Cloud",
+    barcodeImageParams: BarcodeImageParams()
+      ..imageFormat = BarcodeImageFormat.Png,
+    code128Params: Code128Params()..code128EncodeMode = Code128EncodeMode.Auto,
+  );
 
   final file = File(fileName);
   file.writeAsBytes(response);

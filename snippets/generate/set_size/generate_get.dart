@@ -27,11 +27,11 @@ Future<void> main() async {
   final Uint8List response = await generateApi.generate(
     EncodeBarcodeType.QR,
     "Aspose.BarCode.Cloud",
-    foregroundColor: "Black",
-    backgroundColor: "White",
-    resolution: 300,
-    imageHeight: 200,
-    imageWidth: 200,
+    barcodeImageParams: BarcodeImageParams()
+      ..imageHeight = 200
+      ..imageWidth = 200
+      ..resolution = 300
+      ..units = GraphicsUnit.Pixel,
   );
 
   final file = File(fileName);
