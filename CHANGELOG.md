@@ -3,6 +3,9 @@
 ## 4.26.6
 
 * June 2026 Release
+  * Regenerate SDK from the updated Cloud API v4.0 specification for the June release
+  * Add generated barcode parameter models and docs for the new QR/PDF417/Code128 options
+  * Update README examples and snippets to cover the new generation parameters
 
 ## 4.26.5
 
