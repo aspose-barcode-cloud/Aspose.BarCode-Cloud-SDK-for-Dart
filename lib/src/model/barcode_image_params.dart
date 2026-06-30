@@ -4,11 +4,11 @@ import '../../aspose_barcode_cloud.dart';
 
 /// Optional barcode image parameters.
 class BarcodeImageParams {
-  /// imageFormat
+  /// Barcode output image format. Default value: png.
   //enum imageFormatEnum {  Png,  Jpeg,  Svg,  Tiff,  Gif,  };
   BarcodeImageFormat? imageFormat;
 
-  /// textLocation
+  /// Specify the displayed text location. Set to CodeLocation.None to hide CodeText. Default value depends on BarcodeType: CodeLocation.Below for 1D barcodes and CodeLocation.None for 2D barcodes.
   //enum textLocationEnum {  Below,  Above,  None,  };
   CodeLocation? textLocation;
 
@@ -20,7 +20,7 @@ class BarcodeImageParams {
 
   String? backgroundColor;
 
-  /// units
+  /// Common units for all measurements. Default units: pixels.
   //enum unitsEnum {  Pixel,  Point,  Inch,  Millimeter,  };
   GraphicsUnit? units;
 

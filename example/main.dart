@@ -20,10 +20,13 @@ Future<void> main() async {
   final Uint8List generated = await genApi.generate(
     EncodeBarcodeType.QR,
     "text",
-    qrEncodeMode: QREncodeMode.Auto,
-    qrErrorLevel: QRErrorLevel.LevelM,
-    qrVersion: QRVersion.Auto,
-    qrAspectRatio: 0.75,
+    qrParams: QrParams(
+      QREncodeMode.Auto,
+      QRErrorLevel.LevelM,
+      QRVersion.Auto,
+      null,
+      0.75,
+    ),
   );
 
   // Save generated image to file

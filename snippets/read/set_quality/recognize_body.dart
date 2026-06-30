@@ -30,7 +30,7 @@ Future<void> main() async {
   final recognizeBase64Request = RecognizeBase64Request(
     [DecodeBarcodeType.Pdf417],
     imageBase64,
-  );
+  )..recognitionMode = RecognitionMode.Excellent;
 
   final BarcodeResponseList result =
       await recognizeApi.recognizeBase64(recognizeBase64Request);

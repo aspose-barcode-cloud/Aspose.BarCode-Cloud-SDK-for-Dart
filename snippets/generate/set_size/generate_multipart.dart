@@ -25,11 +25,14 @@ Future<void> main() async {
       '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png';
 
   final Uint8List response = await generateApi.generateMultipart(
-      EncodeBarcodeType.Aztec, "Aspose.BarCode.Cloud",
-      imageHeight: 200,
-      imageWidth: 200,
-      resolution: 150,
-      units: GraphicsUnit.Point);
+    EncodeBarcodeType.Aztec,
+    "Aspose.BarCode.Cloud",
+    barcodeImageParams: BarcodeImageParams()
+      ..imageHeight = 200
+      ..imageWidth = 200
+      ..resolution = 150
+      ..units = GraphicsUnit.Point,
+  );
 
   await File(fileName).writeAsBytes(response);
 

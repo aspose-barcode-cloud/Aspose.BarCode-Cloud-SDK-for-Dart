@@ -4,7 +4,7 @@ import '../../aspose_barcode_cloud.dart';
 
 /// Optional Code128 barcode generation parameters.
 class Code128Params {
-  /// code128EncodeMode
+  /// Code128 barcode encode mode. Controls which Code 128 subset (A, B, C, or mix) is used.
   //enum code128EncodeModeEnum {  Auto,  CodeA,  CodeB,  CodeAB,  CodeC,  CodeAC,  CodeBC,  };
   Code128EncodeMode? code128EncodeMode;
 

@@ -12,11 +12,11 @@ class RecognizeBase64Request {
 
   late String fileBase64;
 
-  /// recognitionMode
+  /// Barcode recognition mode.
   //enum recognitionModeEnum {  Fast,  Normal,  Excellent,  };
   RecognitionMode? recognitionMode;
 
-  /// recognitionImageKind
+  /// Image kind for recognition.
   //enum recognitionImageKindEnum {  Photo,  ScannedDocument,  ClearImage,  };
   RecognitionImageKind? recognitionImageKind;
 

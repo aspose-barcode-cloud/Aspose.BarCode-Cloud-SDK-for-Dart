@@ -25,10 +25,13 @@ Future<void> main() async {
       '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Code39.png';
 
   final Uint8List response = await generateApi.generateMultipart(
-      EncodeBarcodeType.Code39, "Aspose",
-      foregroundColor: "Green",
-      backgroundColor: "Yellow",
-      imageFormat: BarcodeImageFormat.Gif);
+    EncodeBarcodeType.Code39,
+    "Aspose",
+    barcodeImageParams: BarcodeImageParams()
+      ..foregroundColor = "Green"
+      ..backgroundColor = "Yellow"
+      ..imageFormat = BarcodeImageFormat.Gif,
+  );
 
   await File(fileName).writeAsBytes(response);
 

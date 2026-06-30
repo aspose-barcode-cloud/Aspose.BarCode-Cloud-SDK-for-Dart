@@ -132,10 +132,8 @@ class ScanApi {
 
     MultipartRequestPlus mp =
         MultipartRequestPlus('POST', Uri.parse(requestPath));
-
     mp.files.add(MultipartFile.fromBytes("file", fileBytes.toList(),
         filename: "somefile.xyz"));
-
     postBody = mp;
 
     final response = await _apiClient.invokeAPI(
