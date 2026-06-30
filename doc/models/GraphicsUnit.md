@@ -5,7 +5,7 @@
 ```dart
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 ```
-Subset of Aspose.Drawing.GraphicsUnit.
+Subset of https://reference.aspose.com/drawing/net/system.drawing/graphicsunit/
 ## Allowable values
 
 * **GraphicsUnit.pixel**

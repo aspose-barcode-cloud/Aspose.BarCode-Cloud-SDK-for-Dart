@@ -2,9 +2,9 @@
 // ignore_for_file: deprecated_member_use_from_same_package
 import '../../aspose_barcode_cloud.dart';
 
-/// Represents information about barcode list.
+/// Represents information about a barcode list.
 class BarcodeResponseList {
-  /// List of barcodes which are present in image.
+  /// List of barcodes that are present in the image.
 
   late List<BarcodeResponse> barcodes;
 

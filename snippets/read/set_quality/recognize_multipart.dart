@@ -23,8 +23,12 @@ Future<void> main() async {
           "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png")
       .readAsBytes();
 
-  final BarcodeResponseList result =
-      await recognizeApi.recognizeMultipart(DecodeBarcodeType.Aztec, file);
+  final BarcodeResponseList result = await recognizeApi.recognizeMultipart(
+    DecodeBarcodeType.Aztec,
+    file,
+    recognitionMode: RecognitionMode.Normal,
+    recognitionImageKind: RecognitionImageKind.ScannedDocument,
+  );
 
   print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
 }

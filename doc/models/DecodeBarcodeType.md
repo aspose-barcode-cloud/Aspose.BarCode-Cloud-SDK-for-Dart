@@ -5,7 +5,7 @@
 ```dart
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 ```
-See Aspose.BarCode.BarCodeRecognition.DecodeType
+See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
 ## Allowable values
 
 * **DecodeBarcodeType.mostCommonlyUsed**

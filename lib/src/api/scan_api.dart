@@ -14,7 +14,7 @@ class ScanApi {
   final ApiClient _apiClient;
 
   ///
-  /// Scan barcode from file on server in the Internet using GET requests with parameter in query string. For scaning files from your hard drive use &#x60;scan-body&#x60; or &#x60;scan-multipart&#x60; endpoints instead.
+  /// Scan a barcode from a file on an Internet server using a GET request with a query string parameter. For scanning files from your hard drive, use &#x60;scan-body&#x60; or &#x60;scan-multipart&#x60; endpoints instead.
   ///
   Future<BarcodeResponseList> scan(String fileUrl) async {
     // ignore: prefer_final_locals
@@ -59,7 +59,7 @@ class ScanApi {
   }
 
   ///
-  /// Scan barcode from file in request body using POST requests with parameter in body in json or xml format.
+  /// Scan a barcode from a file in the request body using a POST request with a JSON or XML body parameter.
   ///
   Future<BarcodeResponseList> scanBase64(
       ScanBase64Request scanBase64Request) async {
@@ -110,7 +110,7 @@ class ScanApi {
   }
 
   ///
-  /// Scan barcode from file in request body using POST requests with parameter in multipart form.
+  /// Scan a barcode from a file in the request body using a POST request with a multipart form parameter.
   ///
   Future<BarcodeResponseList> scanMultipart(Uint8List fileBytes) async {
     // ignore: prefer_final_locals
@@ -132,10 +132,8 @@ class ScanApi {
 
     MultipartRequestPlus mp =
         MultipartRequestPlus('POST', Uri.parse(requestPath));
-
     mp.files.add(MultipartFile.fromBytes("file", fileBytes.toList(),
         filename: "somefile.xyz"));
-
     postBody = mp;
 
     final response = await _apiClient.invokeAPI(

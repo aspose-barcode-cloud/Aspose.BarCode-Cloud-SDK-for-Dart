@@ -17,8 +17,17 @@ Future<void> main() async {
   final genApi = GenerateApi(client);
   final scanApi = ScanApi(client);
   // Generate image with barcode
-  final Uint8List generated =
-      await genApi.generate(EncodeBarcodeType.QR, "text");
+  final Uint8List generated = await genApi.generate(
+    EncodeBarcodeType.QR,
+    "text",
+    qrParams: QrParams(
+      QREncodeMode.Auto,
+      QRErrorLevel.LevelM,
+      QRVersion.Auto,
+      null,
+      0.75,
+    ),
+  );
 
   // Save generated image to file
   File(fileName).writeAsBytesSync(generated);

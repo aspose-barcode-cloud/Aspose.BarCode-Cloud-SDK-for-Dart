@@ -10,7 +10,7 @@ import 'api_helper.dart';
 import 'auth/authentication.dart';
 
 /// Current SDK Version
-const SDK_VERSION = "4.26.5";
+const SDK_VERSION = "4.26.6";
 
 /// ApiClient is responsible for making HTTP requests to the API.
 class ApiClient {
@@ -74,10 +74,16 @@ class ApiClient {
           return BarcodeResponse.fromJson(value);
         case 'BarcodeResponseList':
           return BarcodeResponseList.fromJson(value);
+        case 'Code128EncodeMode':
+          return Code128EncodeMode.fromJson(value);
+        case 'Code128Params':
+          return Code128Params.fromJson(value);
         case 'CodeLocation':
           return CodeLocation.fromJson(value);
         case 'DecodeBarcodeType':
           return DecodeBarcodeType.fromJson(value);
+        case 'ECIEncodings':
+          return ECIEncodings.fromJson(value);
         case 'EncodeBarcodeType':
           return EncodeBarcodeType.fromJson(value);
         case 'EncodeData':
@@ -88,12 +94,32 @@ class ApiClient {
           return GenerateParams.fromJson(value);
         case 'GraphicsUnit':
           return GraphicsUnit.fromJson(value);
+        case 'MacroCharacter':
+          return MacroCharacter.fromJson(value);
+        case 'MicroQRVersion':
+          return MicroQRVersion.fromJson(value);
+        case 'Pdf417EncodeMode':
+          return Pdf417EncodeMode.fromJson(value);
+        case 'Pdf417ErrorLevel':
+          return Pdf417ErrorLevel.fromJson(value);
+        case 'Pdf417Params':
+          return Pdf417Params.fromJson(value);
+        case 'QREncodeMode':
+          return QREncodeMode.fromJson(value);
+        case 'QRErrorLevel':
+          return QRErrorLevel.fromJson(value);
+        case 'QRVersion':
+          return QRVersion.fromJson(value);
+        case 'QrParams':
+          return QrParams.fromJson(value);
         case 'RecognitionImageKind':
           return RecognitionImageKind.fromJson(value);
         case 'RecognitionMode':
           return RecognitionMode.fromJson(value);
         case 'RecognizeBase64Request':
           return RecognizeBase64Request.fromJson(value);
+        case 'RectMicroQRVersion':
+          return RectMicroQRVersion.fromJson(value);
         case 'RegionPoint':
           return RegionPoint.fromJson(value);
         case 'ScanBase64Request':

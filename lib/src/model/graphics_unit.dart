@@ -1,4 +1,4 @@
-/// Subset of Aspose.Drawing.GraphicsUnit.
+/// Subset of https://reference.aspose.com/drawing/net/system.drawing/graphicsunit/
 /// GraphicsUnit: [Pixel, Point, Inch, Millimeter]
 class GraphicsUnit {
   /// The underlying value of GraphicsUnit enum.
@@ -6,19 +6,19 @@ class GraphicsUnit {
 
   GraphicsUnit._internal(this._value);
 
-  /// Subset of Aspose.Drawing.GraphicsUnit.
+  /// Subset of https://reference.aspose.com/drawing/net/system.drawing/graphicsunit/
   // ignore: non_constant_identifier_names
   static final GraphicsUnit Pixel = GraphicsUnit._internal("Pixel");
 
-  /// Subset of Aspose.Drawing.GraphicsUnit.
+  /// Subset of https://reference.aspose.com/drawing/net/system.drawing/graphicsunit/
   // ignore: non_constant_identifier_names
   static final GraphicsUnit Point = GraphicsUnit._internal("Point");
 
-  /// Subset of Aspose.Drawing.GraphicsUnit.
+  /// Subset of https://reference.aspose.com/drawing/net/system.drawing/graphicsunit/
   // ignore: non_constant_identifier_names
   static final GraphicsUnit Inch = GraphicsUnit._internal("Inch");
 
-  /// Subset of Aspose.Drawing.GraphicsUnit.
+  /// Subset of https://reference.aspose.com/drawing/net/system.drawing/graphicsunit/
   // ignore: non_constant_identifier_names
   static final GraphicsUnit Millimeter = GraphicsUnit._internal("Millimeter");
 

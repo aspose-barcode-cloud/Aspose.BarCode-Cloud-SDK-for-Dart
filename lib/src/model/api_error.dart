@@ -19,7 +19,7 @@ class ApiError {
 
   DateTime? dateTime;
 
-  /// innerError
+  /// Gets or sets inner error.
 
   ApiError? innerError;
 

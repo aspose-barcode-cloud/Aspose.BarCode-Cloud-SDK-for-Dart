@@ -28,8 +28,13 @@ Future<void> main() async {
   final Uint8List barcodeStream = await generateApi.generateMultipart(
     EncodeBarcodeType.Pdf417,
     "Aspose.BarCode.Cloud",
-    textLocation: CodeLocation.Above,
-    imageFormat: BarcodeImageFormat.Svg,
+    barcodeImageParams: BarcodeImageParams()
+      ..textLocation = CodeLocation.Above
+      ..imageFormat = BarcodeImageFormat.Svg,
+    pdf417Params: Pdf417Params()
+      ..pdf417EncodeMode = Pdf417EncodeMode.Auto
+      ..pdf417ErrorLevel = Pdf417ErrorLevel.Level2
+      ..pdf417AspectRatio = 3,
   );
 
   file.writeAsBytes(barcodeStream);

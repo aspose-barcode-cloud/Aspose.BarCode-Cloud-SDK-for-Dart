@@ -1,4 +1,4 @@
-/// See Aspose.BarCode.BarCodeRecognition.DecodeType
+/// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
 /// DecodeBarcodeType: [MostCommonlyUsed, QR, AustraliaPost, AustralianPosteParcel, Aztec, Codabar, CodablockF, Code11, Code128, Code16K, Code32, Code39, Code39FullASCII, Code93, CompactPdf417, DataLogic2of5, DataMatrix, DatabarExpanded, DatabarExpandedStacked, DatabarLimited, DatabarOmniDirectional, DatabarStacked, DatabarStackedOmniDirectional, DatabarTruncated, DeutschePostIdentcode, DeutschePostLeitcode, DotCode, DutchKIX, EAN13, EAN14, EAN8, GS1Aztec, GS1Code128, GS1CompositeBar, GS1DataMatrix, GS1DotCode, GS1HanXin, GS1MicroPdf417, GS1QR, HanXin, HIBCAztecLIC, HIBCAztecPAS, HIBCCode128LIC, HIBCCode128PAS, HIBCCode39LIC, HIBCCode39PAS, HIBCDataMatrixLIC, HIBCDataMatrixPAS, HIBCQRLIC, HIBCQRPAS, IATA2of5, ISBN, ISMN, ISSN, ITF14, ITF6, Interleaved2of5, ItalianPost25, MacroPdf417, Mailmark, Matrix2of5, MaxiCode, MicrE13B, MicroPdf417, MicroQR, MSI, OneCode, OPC, PatchCode, Pdf417, Pharmacode, Planet, Postnet, PZN, RectMicroQR, RM4SCC, SCC14, SSCC18, Standard2of5, Supplement, SwissPostParcel, UPCA, UPCE, VIN]
 class DecodeBarcodeType {
   /// The underlying value of DecodeBarcodeType enum.
@@ -6,396 +6,396 @@ class DecodeBarcodeType {
 
   DecodeBarcodeType._internal(this._value);
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MostCommonlyUsed =
       DecodeBarcodeType._internal("MostCommonlyUsed");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType QR = DecodeBarcodeType._internal("QR");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType AustraliaPost =
       DecodeBarcodeType._internal("AustraliaPost");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType AustralianPosteParcel =
       DecodeBarcodeType._internal("AustralianPosteParcel");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Aztec = DecodeBarcodeType._internal("Aztec");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Codabar =
       DecodeBarcodeType._internal("Codabar");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType CodablockF =
       DecodeBarcodeType._internal("CodablockF");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code11 = DecodeBarcodeType._internal("Code11");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code128 =
       DecodeBarcodeType._internal("Code128");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code16K =
       DecodeBarcodeType._internal("Code16K");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code32 = DecodeBarcodeType._internal("Code32");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code39 = DecodeBarcodeType._internal("Code39");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code39FullASCII =
       DecodeBarcodeType._internal("Code39FullASCII");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Code93 = DecodeBarcodeType._internal("Code93");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType CompactPdf417 =
       DecodeBarcodeType._internal("CompactPdf417");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DataLogic2of5 =
       DecodeBarcodeType._internal("DataLogic2of5");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DataMatrix =
       DecodeBarcodeType._internal("DataMatrix");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarExpanded =
       DecodeBarcodeType._internal("DatabarExpanded");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarExpandedStacked =
       DecodeBarcodeType._internal("DatabarExpandedStacked");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarLimited =
       DecodeBarcodeType._internal("DatabarLimited");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarOmniDirectional =
       DecodeBarcodeType._internal("DatabarOmniDirectional");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarStacked =
       DecodeBarcodeType._internal("DatabarStacked");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarStackedOmniDirectional =
       DecodeBarcodeType._internal("DatabarStackedOmniDirectional");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DatabarTruncated =
       DecodeBarcodeType._internal("DatabarTruncated");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DeutschePostIdentcode =
       DecodeBarcodeType._internal("DeutschePostIdentcode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DeutschePostLeitcode =
       DecodeBarcodeType._internal("DeutschePostLeitcode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DotCode =
       DecodeBarcodeType._internal("DotCode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType DutchKIX =
       DecodeBarcodeType._internal("DutchKIX");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType EAN13 = DecodeBarcodeType._internal("EAN13");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType EAN14 = DecodeBarcodeType._internal("EAN14");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType EAN8 = DecodeBarcodeType._internal("EAN8");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1Aztec =
       DecodeBarcodeType._internal("GS1Aztec");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1Code128 =
       DecodeBarcodeType._internal("GS1Code128");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1CompositeBar =
       DecodeBarcodeType._internal("GS1CompositeBar");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1DataMatrix =
       DecodeBarcodeType._internal("GS1DataMatrix");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1DotCode =
       DecodeBarcodeType._internal("GS1DotCode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1HanXin =
       DecodeBarcodeType._internal("GS1HanXin");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1MicroPdf417 =
       DecodeBarcodeType._internal("GS1MicroPdf417");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType GS1QR = DecodeBarcodeType._internal("GS1QR");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HanXin = DecodeBarcodeType._internal("HanXin");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCAztecLIC =
       DecodeBarcodeType._internal("HIBCAztecLIC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCAztecPAS =
       DecodeBarcodeType._internal("HIBCAztecPAS");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCCode128LIC =
       DecodeBarcodeType._internal("HIBCCode128LIC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCCode128PAS =
       DecodeBarcodeType._internal("HIBCCode128PAS");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCCode39LIC =
       DecodeBarcodeType._internal("HIBCCode39LIC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCCode39PAS =
       DecodeBarcodeType._internal("HIBCCode39PAS");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCDataMatrixLIC =
       DecodeBarcodeType._internal("HIBCDataMatrixLIC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCDataMatrixPAS =
       DecodeBarcodeType._internal("HIBCDataMatrixPAS");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCQRLIC =
       DecodeBarcodeType._internal("HIBCQRLIC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType HIBCQRPAS =
       DecodeBarcodeType._internal("HIBCQRPAS");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType IATA2of5 =
       DecodeBarcodeType._internal("IATA2of5");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType ISBN = DecodeBarcodeType._internal("ISBN");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType ISMN = DecodeBarcodeType._internal("ISMN");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType ISSN = DecodeBarcodeType._internal("ISSN");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType ITF14 = DecodeBarcodeType._internal("ITF14");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType ITF6 = DecodeBarcodeType._internal("ITF6");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Interleaved2of5 =
       DecodeBarcodeType._internal("Interleaved2of5");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType ItalianPost25 =
       DecodeBarcodeType._internal("ItalianPost25");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MacroPdf417 =
       DecodeBarcodeType._internal("MacroPdf417");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Mailmark =
       DecodeBarcodeType._internal("Mailmark");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Matrix2of5 =
       DecodeBarcodeType._internal("Matrix2of5");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MaxiCode =
       DecodeBarcodeType._internal("MaxiCode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MicrE13B =
       DecodeBarcodeType._internal("MicrE13B");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MicroPdf417 =
       DecodeBarcodeType._internal("MicroPdf417");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MicroQR =
       DecodeBarcodeType._internal("MicroQR");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType MSI = DecodeBarcodeType._internal("MSI");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType OneCode =
       DecodeBarcodeType._internal("OneCode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType OPC = DecodeBarcodeType._internal("OPC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType PatchCode =
       DecodeBarcodeType._internal("PatchCode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Pdf417 = DecodeBarcodeType._internal("Pdf417");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Pharmacode =
       DecodeBarcodeType._internal("Pharmacode");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Planet = DecodeBarcodeType._internal("Planet");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Postnet =
       DecodeBarcodeType._internal("Postnet");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType PZN = DecodeBarcodeType._internal("PZN");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType RectMicroQR =
       DecodeBarcodeType._internal("RectMicroQR");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType RM4SCC = DecodeBarcodeType._internal("RM4SCC");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType SCC14 = DecodeBarcodeType._internal("SCC14");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType SSCC18 = DecodeBarcodeType._internal("SSCC18");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Standard2of5 =
       DecodeBarcodeType._internal("Standard2of5");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType Supplement =
       DecodeBarcodeType._internal("Supplement");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType SwissPostParcel =
       DecodeBarcodeType._internal("SwissPostParcel");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType UPCA = DecodeBarcodeType._internal("UPCA");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType UPCE = DecodeBarcodeType._internal("UPCE");
 
-  /// See Aspose.BarCode.BarCodeRecognition.DecodeType
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/decodetype/
   // ignore: non_constant_identifier_names
   static final DecodeBarcodeType VIN = DecodeBarcodeType._internal("VIN");
 

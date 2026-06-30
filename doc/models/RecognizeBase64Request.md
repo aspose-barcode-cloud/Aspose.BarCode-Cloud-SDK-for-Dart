@@ -5,14 +5,14 @@
 ```dart
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 ```
-Barcode recognize request
+Barcode recognition request.
 
 ## Properties
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
-**barcodeTypes** | [**List&lt;DecodeBarcodeType&gt;**](DecodeBarcodeType.md) | Array of decode types to find on barcode | [default to const []]
+**barcodeTypes** | [**List&lt;DecodeBarcodeType&gt;**](DecodeBarcodeType.md) | Array of barcode decode types to find. | [default to const []]
 **fileBase64** | **String** | Barcode image bytes encoded as base-64. | 
-**recognitionMode** | [**RecognitionMode**](RecognitionMode.md) |  | [optional] 
-**recognitionImageKind** | [**RecognitionImageKind**](RecognitionImageKind.md) |  | [optional] 
+**recognitionMode** | [**RecognitionMode**](RecognitionMode.md) | Barcode recognition mode. | [optional] 
+**recognitionImageKind** | [**RecognitionImageKind**](RecognitionImageKind.md) | Image kind for recognition. | [optional] 
 

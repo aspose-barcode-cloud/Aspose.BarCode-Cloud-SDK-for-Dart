@@ -15,5 +15,5 @@ Name | Type | Description | Notes
 **message** | **String** | Gets or sets error message. | 
 **description** | **String** | Gets or sets error description. | [optional] 
 **dateTime** | [**DateTime**](DateTime.md) | Gets or sets server datetime. | [optional] 
-**innerError** | [**ApiError**](ApiError.md) |  | [optional] 
+**innerError** | [**ApiError**](ApiError.md) | Gets or sets inner error. | [optional] 
 

@@ -23,7 +23,10 @@ Future<void> main() async {
       .readAsBytes();
 
   final BarcodeResponseList result = await recognizeApi.recognizeMultipart(
-      DecodeBarcodeType.MostCommonlyUsed, file);
+    DecodeBarcodeType.MostCommonlyUsed,
+    file,
+    recognitionImageKind: RecognitionImageKind.ClearImage,
+  );
 
   print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
 }
