@@ -3,7 +3,7 @@
 [![Dart test](https://github.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/actions/workflows/dart.yml/badge.svg?branch=main)](https://github.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/actions/workflows/dart.yml)
 
 - API version: 4.0
-- SDK version: 4.26.6
+- SDK version: 4.26.7
 
 ## SDK and API Version Compatibility:
 
@@ -43,7 +43,7 @@ Add this dependency to your *pubspec.yaml*:
 
 ```yaml
 dependencies:
-  aspose_barcode_cloud: 4.26.6
+  aspose_barcode_cloud: 4.26.7
 ```
 
 ## Sample usage
