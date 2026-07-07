@@ -34,3 +34,20 @@ jobs:
 
       - name: Dart try publish
         run: dart pub publish --dry-run
+
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Line coverage gate (>= 80%)
+        run: |
+          chmod +x scripts/*
+          ./scripts/coverage.sh
+        env:
+          TEST_CONFIGURATION_ACCESS_TOKEN: ${{ secrets.TEST_CONFIGURATION_ACCESS_TOKEN }}

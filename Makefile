@@ -44,15 +44,12 @@ update:
 
 .PHONY: cover
 cover:
-	## Activate package `coverage` (if needed):
-	# dart pub global activate coverage
+	# Measure line coverage and fail if it drops below 80% (override with THRESHOLD).
+	./scripts/coverage.sh
 
-	# Run Dart tests and output them at directory `./coverage`:
-	dart run coverage:test_with_coverage
-
+.PHONY: cover-html
+cover-html: cover
 	# Generate HTML from LCOV report:
 	# Install lcov with `brew install lcov` or `apt-get install lcov`
 	genhtml ./coverage/lcov.info -o ./coverage/html
-
-	# Open the HTML coverage report:
-	ls ./coverage/report/index.html
+	ls ./coverage/html/index.html
