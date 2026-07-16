@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 4.26.7
+
+* July 2026 Release
+  * Add an offline coverage test suite and enforce an 80% line-coverage gate in CI
+  * Remove unused internal HTTP byte-stream and charset helpers
+
 ## 4.26.6
 
 * June 2026 Release
