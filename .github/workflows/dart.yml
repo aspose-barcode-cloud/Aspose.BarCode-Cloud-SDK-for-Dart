@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      TEST_CONFIGURATION_ACCESS_TOKEN: ${{ secrets.TEST_CONFIGURATION_ACCESS_TOKEN }}
+
     steps:
       - uses: actions/checkout@v6
       - uses: dart-lang/setup-dart@v1
@@ -17,14 +20,15 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
-      - name: Dart test
-        run: | 
-          dart test
+      - name: Test with coverage (>= 80% line gate)
+        run: |
           chmod +x scripts/*
-          ./scripts/run_snippets.sh   
+          ./scripts/coverage.sh
+
+      - name: Run snippets
+        run: |
+          ./scripts/run_snippets.sh
           git checkout scripts test_data
-        env:
-          TEST_CONFIGURATION_ACCESS_TOKEN: ${{ secrets.TEST_CONFIGURATION_ACCESS_TOKEN }}
 
       - name: Dart analyze
         run: dart analyze --fatal-infos lib example
@@ -34,20 +38,3 @@ jobs:
 
       - name: Dart try publish
         run: dart pub publish --dry-run
-
-  coverage:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v6
-      - uses: dart-lang/setup-dart@v1
-
-      - name: Install dependencies
-        run: dart pub get
-
-      - name: Line coverage gate (>= 80%)
-        run: |
-          chmod +x scripts/*
-          ./scripts/coverage.sh
-        env:
-          TEST_CONFIGURATION_ACCESS_TOKEN: ${{ secrets.TEST_CONFIGURATION_ACCESS_TOKEN }}
