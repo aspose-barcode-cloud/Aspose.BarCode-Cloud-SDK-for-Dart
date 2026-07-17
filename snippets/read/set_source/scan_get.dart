@@ -20,7 +20,7 @@ Future<void> main() async {
   final scanApi = ScanApi(ApiClient(config));
 
   final barcodeImageUrl =
-      "https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png";
+      "https://raw.githubusercontent.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/main/test_data/qr_and_code128.png";
 
   final BarcodeResponseList result = await scanApi.scan(barcodeImageUrl);
 

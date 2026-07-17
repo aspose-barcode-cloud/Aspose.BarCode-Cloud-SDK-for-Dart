@@ -25,7 +25,7 @@ void main() {
     // Test case for barcode_recognize_barcode_type_get
     var response = await TestConfig.recognizeApi.recognize(
       DecodeBarcodeType.QR,
-      'https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png',
+      'https://raw.githubusercontent.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/main/test_data/qr_and_code128.png',
       recognitionMode: RecognitionMode.Fast,
       recognitionImageKind: RecognitionImageKind.ClearImage,
     );
@@ -33,7 +33,7 @@ void main() {
     expect(response.barcodes.length, equals(1));
     var barcode = response.barcodes[0];
     expect(barcode.type, equals('QR'));
-    expect(barcode.barcodeValue, equals('http://en.m.wikipedia.org'));
+    expect(barcode.barcodeValue, equals('QR text'));
   });
 
   test("Barcode Recognize Body Post", () async {

@@ -31,12 +31,13 @@ void main() {
   test("Barcode Scan Get", () async {
     // Test case for barcode_scan_get
     var response = await TestConfig.scanApi.scan(
-        'https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png');
+        'https://raw.githubusercontent.com/aspose-barcode-cloud/Aspose.BarCode-Cloud-SDK-for-Dart/main/test_data/qr_and_code128.png');
 
-    expect(response.barcodes.length, equals(1));
+    expect(response.barcodes.length, equals(2));
     expect(response.barcodes[0].type, equals('QR'));
-    expect(
-        response.barcodes[0].barcodeValue, equals('http://en.m.wikipedia.org'));
+    expect(response.barcodes[0].barcodeValue, equals('QR text'));
+    expect(response.barcodes[1].type, equals('Code128'));
+    expect(response.barcodes[1].barcodeValue, equals('Code128 text'));
   });
 
   test("Barcode Scan Body Post", () async {
