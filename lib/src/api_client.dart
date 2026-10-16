@@ -10,7 +10,7 @@ import 'api_helper.dart';
 import 'auth/authentication.dart';
 
 /// Current SDK Version
-const SDK_VERSION = "4.26.9";
+const SDK_VERSION = "4.26.10";
 
 /// ApiClient is responsible for making HTTP requests to the API.
 class ApiClient {
