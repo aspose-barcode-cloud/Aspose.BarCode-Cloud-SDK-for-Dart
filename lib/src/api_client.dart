@@ -251,7 +251,8 @@ class ApiClient {
     // close() may have run while a token was being fetched
     _ensureOpen();
 
-    final ps = queryParams.map((p) => '${p.name}=${p.value}');
+    final ps = queryParams.map((p) =>
+        '${Uri.encodeQueryComponent(p.name)}=${Uri.encodeQueryComponent(p.value)}');
     final String queryString = ps.isNotEmpty ? '?${ps.join('&')}' : '';
 
     final String url = _basePath + path + queryString;

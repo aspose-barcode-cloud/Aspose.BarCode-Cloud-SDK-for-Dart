@@ -9,9 +9,9 @@
 // `api_helper` parameter formatting functions — to raise core line coverage.
 //
 // The `lib/src/api/` classes are exercised mostly by the live
-// `*_api_test.dart` suites. Only `ScanApi.scan` also runs offline, against
-// the loopback server in `api_client_close_test.dart`. The 80% gate in
-// `scripts/coverage.sh` (and therefore `make cover`) still requires live API
+// `*_api_test.dart` suites. Only `ScanApi.scan` and `GenerateApi.generate`
+// also run offline, against the loopback server in `loopback_api.dart`.
+// `make cover` runs the live suites too, so it still requires live API
 // credentials to pass.
 //
 // ignore_for_file: non_constant_identifier_names
