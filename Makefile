@@ -44,7 +44,7 @@ update:
 
 .PHONY: cover
 cover:
-	# Measure line coverage and fail if it drops below 80% (override with THRESHOLD).
+	# Measure line coverage and fail if it drops below 80% (override with COVERAGE_THRESHOLD).
 	./scripts/coverage.sh
 
 .PHONY: cover-html

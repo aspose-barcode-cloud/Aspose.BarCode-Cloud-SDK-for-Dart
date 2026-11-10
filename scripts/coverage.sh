@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 #
-# Measure line coverage of the generated SDK and fail when it drops below the
-# threshold (default 80%, override with the first argument or the THRESHOLD
-# environment variable).
+# `make cover`: measure line coverage of the SDK library (lib/) and fail when it
+# drops below the threshold (default 80%, override with the first argument or the
+# COVERAGE_THRESHOLD environment variable). The gate itself is the shared
+# scripts/coverage.py, which also writes coverage/coverage-{badge,summary}.json.
 #
 # Usage:
-#   ./scripts/coverage.sh          # gate at 80%
-#   ./scripts/coverage.sh 90       # gate at 90%
-#   THRESHOLD=99 ./scripts/coverage.sh
+#   ./scripts/coverage.sh                    # gate at 80%
+#   ./scripts/coverage.sh 90                 # gate at 90%
+#   COVERAGE_THRESHOLD=99 ./scripts/coverage.sh
 #
 set -euo pipefail
 
-THRESHOLD="${1:-${THRESHOLD:-80}}"
+THRESHOLD="${1:-${COVERAGE_THRESHOLD:-80}}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(dirname "${SCRIPT_DIR}")"
@@ -36,22 +37,7 @@ dart pub global run coverage:format_coverage \
   --out=coverage/lcov.info \
   --report-on=lib
 
-echo "==> Computing line coverage"
-PCT="$(awk -F: '
-  /^LH:/ { hit += $2 }
-  /^LF:/ { found += $2 }
-  END {
-    if (found == 0) { print "0"; exit }
-    printf "%.2f", 100 * hit / found
-  }
-' coverage/lcov.info)"
-
-echo "Line coverage: ${PCT}% (threshold: ${THRESHOLD}%)"
-
-# Bash cannot compare floats; delegate the comparison to awk.
-if awk -v p="${PCT}" -v t="${THRESHOLD}" 'BEGIN { exit !(p + 0 < t + 0) }'; then
-  echo "FAIL: line coverage ${PCT}% is below the ${THRESHOLD}% threshold" >&2
-  exit 1
-fi
-
-echo "OK: line coverage ${PCT}% meets the ${THRESHOLD}% threshold"
+echo "==> Checking line coverage"
+# `python`, or `python3` where only that exists (e.g. a stock Ubuntu 26.04).
+python="$(command -v python || command -v python3)"
+"${python}" scripts/coverage.py lcov coverage/lcov.info --threshold "${THRESHOLD}"
