@@ -45,7 +45,7 @@ Future<void> main() async {
 
     final Uint8List response = await generateApi.generateBody(generateParams);
 
-    file.writeAsBytes(response);
+    await file.writeAsBytes(response);
 
     print("File '${file.path}' generated.");
   });

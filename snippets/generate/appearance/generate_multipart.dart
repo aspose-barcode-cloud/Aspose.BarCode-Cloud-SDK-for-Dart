@@ -37,7 +37,7 @@ Future<void> main() async {
         ..pdf417AspectRatio = 3,
     );
 
-    file.writeAsBytes(barcodeStream);
+    await file.writeAsBytes(barcodeStream);
 
     print("File '${file.path}' generated.");
   });

@@ -25,7 +25,7 @@ Future<void> main() async {
     final Uint8List response = await generateApi.generate(
         EncodeBarcodeType.QR, "Aspose.BarCode.Cloud");
     final file = File(fileName);
-    file.writeAsBytes(response);
+    await file.writeAsBytes(response);
 
     print("File '${file.path}' generated.");
   });

@@ -27,7 +27,7 @@ Future<void> main() async {
         EncodeBarcodeType.Pdf417, "Aspose.BarCode.Cloud");
 
     final file = File(fileName);
-    file.writeAsBytes(response);
+    await file.writeAsBytes(response);
 
     print("File '${file.path}' generated.");
   });

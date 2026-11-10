@@ -17,6 +17,7 @@ const SDK_VERSION = "4.26.10";
 class ApiClient {
   late final String _basePath;
   final _httpClient = Http.Client();
+  bool _closed = false;
 
   /// SDK header name
   static const String API_SDK_HEADER = "x-aspose-client";
@@ -57,8 +58,10 @@ class ApiClient {
   /// Until the client is closed, its idle connections keep a command-line
   /// program running for up to 15 seconds after its last request. Call
   /// [close] once the client is no longer needed, or let [use] do it.
-  /// Requests made after [close] fail. Calling [close] again does nothing.
+  /// Requests made after [close] throw an [ApiException] without contacting
+  /// the server. Calling [close] again does nothing.
   void close() {
+    _closed = true;
     _httpClient.close();
   }
 
@@ -67,6 +70,7 @@ class ApiClient {
   ///
   /// The client is closed even if [action] throws.
   /// Returns the result of [action].
+  /// Don't call [use] on a client that other code still needs.
   ///
   /// ```dart
   /// final recognized = await ApiClient(config).use((client) {
@@ -213,6 +217,10 @@ class ApiClient {
       Map<String, String> formParams,
       String contentType,
       List<String> authNames) async {
+    if (_closed) {
+      throw ApiException(0, 'ApiClient is closed');
+    }
+
     await _updateParamsForAuth(queryParams, headerParams);
 
     final ps = queryParams.map((p) => '${p.name}=${p.value}');

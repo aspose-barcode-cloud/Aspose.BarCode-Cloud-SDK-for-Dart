@@ -44,21 +44,21 @@ Use one of these two patterns:
 1. Let the SDK fetch OAuth tokens for you.
 
 ```dart
-final client = ApiClient(Configuration(
+final config = Configuration(
   clientId: clientId,
   clientSecret: clientSecret,
-));
+);
 ```
 
 2. Inject a pre-fetched bearer token.
 
 ```dart
-final client = ApiClient(Configuration(
+final config = Configuration(
   accessToken: accessToken,
-));
+);
 ```
 
-`ApiClient` always creates `OAuth` internally. If neither `(clientId, clientSecret)` nor `accessToken` is present, construction fails with `ApiException(0, "clientId and clientSecret or accessToken required")`.
+Then run the work in `ApiClient(config).use(...)` as in the quick start. `ApiClient` always creates `OAuth` internally. If neither `(clientId, clientSecret)` nor `accessToken` is present, construction fails with `ApiException(0, "clientId and clientSecret or accessToken required")`.
 
 Inside this repo, tests use:
 
@@ -110,7 +110,7 @@ Key method names:
 7. API failures throw `ApiException`. Use `e.code`, `e.message`, and `e.getDetails()` when the caller needs HTTP status or server-side validation details.
 8. `Configuration.fromEnv` is narrower than the JSON loader: `Configuration.load(...)` reads `clientId`, `clientSecret`, `basePath`, `tokenUrl`, and `accessToken`, but `fromEnv(...)` currently fills only `accessToken`.
 9. The package supports Dart and Flutter, but examples that use `dart:io` file APIs are not portable to Flutter web. Keep that distinction clear when writing snippets.
-10. `ApiClient` owns an `http.Client` with keep-alive connections. A command-line program that never closes it waits about 15 seconds after its last request before it exits. Wrap the work in `ApiClient(config).use(...)` or call `close()`; requests after `close()` fail.
+10. `ApiClient` owns an `http.Client` with keep-alive connections. A command-line program that never closes it waits about 15 seconds after its last request before it exits. Wrap the work in `ApiClient(config).use(...)` or call `close()`; requests after `close()` throw `ApiException(0, "ApiClient is closed")`.
 
 ## Common patterns
 
@@ -160,7 +160,8 @@ Future<void> main() async {
     RecognitionImageKind.ClearImage,
   );
 
-  final result = await RecognizeApi(client).recognizeBase64(request);
+  final result = await ApiClient(config)
+      .use((client) => RecognizeApi(client).recognizeBase64(request));
   for (final barcode in result.barcodes) {
     print('${barcode.type}: ${barcode.barcodeValue}');
   }
@@ -176,7 +177,8 @@ import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 
 Future<void> main() async {
   final bytes = await File('unknown.png').readAsBytes();
-  final result = await ScanApi(client).scanMultipart(bytes);
+  final result = await ApiClient(config)
+      .use((client) => ScanApi(client).scanMultipart(bytes));
 
   for (final barcode in result.barcodes) {
     print('${barcode.type}: ${barcode.barcodeValue}');

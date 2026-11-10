@@ -35,7 +35,7 @@ Future<void> main() async {
     );
 
     final file = File(fileName);
-    file.writeAsBytes(response);
+    await file.writeAsBytes(response);
 
     print("File '${file.path}' generated.");
   });
