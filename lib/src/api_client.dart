@@ -3,7 +3,7 @@
 import 'dart:async' show FutureOr;
 import 'dart:convert' show json;
 
-import 'package:http/http.dart' as Http show Client, Response;
+import 'package:http/http.dart' as Http show Client, ClientException, Response;
 
 import 'http/multipart_request_plus.dart';
 import '../aspose_barcode_cloud.dart';
@@ -45,7 +45,8 @@ class ApiClient {
         clientId: config.clientId,
         clientSecret: config.clientSecret,
         accessToken: config.accessToken,
-        tokenUrl: config.tokenUrl);
+        tokenUrl: config.tokenUrl,
+        httpClient: _httpClient);
   }
 
   /// Add default header value by key
@@ -59,7 +60,9 @@ class ApiClient {
   /// program running for up to 15 seconds after its last request. Call
   /// [close] once the client is no longer needed, or let [use] do it.
   /// Requests made after [close] throw an [ApiException] without contacting
-  /// the server. Calling [close] again does nothing.
+  /// the server. Requests still in flight, token requests included, are
+  /// aborted and fail with the same [ApiException].
+  /// Calling [close] again does nothing.
   void close() {
     _closed = true;
     _httpClient.close();
@@ -82,6 +85,12 @@ class ApiClient {
       return await action(this);
     } finally {
       close();
+    }
+  }
+
+  void _ensureOpen() {
+    if (_closed) {
+      throw ApiException(0, 'ApiClient is closed');
     }
   }
 
@@ -217,11 +226,30 @@ class ApiClient {
       Map<String, String> formParams,
       String contentType,
       List<String> authNames) async {
-    if (_closed) {
-      throw ApiException(0, 'ApiClient is closed');
+    _ensureOpen();
+    try {
+      return await _send(path, method, queryParams, body, headerParams,
+          formParams, contentType);
+    } on Http.ClientException catch (e, stack) {
+      // close() aborts requests in flight, token requests included
+      if (_closed) {
+        throw ApiException.withInner(0, 'ApiClient is closed', e, stack);
+      }
+      rethrow;
     }
+  }
 
+  Future<Http.Response> _send(
+      String path,
+      String method,
+      List<QueryParam> queryParams,
+      Object? body,
+      Map<String, String> headerParams,
+      Map<String, String> formParams,
+      String contentType) async {
     await _updateParamsForAuth(queryParams, headerParams);
+    // close() may have run while a token was being fetched
+    _ensureOpen();
 
     final ps = queryParams.map((p) => '${p.name}=${p.value}');
     final String queryString = ps.isNotEmpty ? '?${ps.join('&')}' : '';

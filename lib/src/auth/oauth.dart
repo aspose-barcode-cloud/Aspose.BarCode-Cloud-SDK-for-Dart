@@ -1,6 +1,6 @@
 import 'dart:convert' show jsonDecode;
 
-import 'package:http/http.dart' show MultipartRequest;
+import 'package:http/http.dart' show Client, MultipartRequest;
 
 import '../api_exception.dart';
 import '../api_helper.dart';
@@ -23,12 +23,18 @@ class OAuth implements Authentication {
   /// Token expiration date
   DateTime? tokenExpiration;
 
+  /// HTTP client for token requests. When `null`, each token request uses
+  /// its own short-lived client. `ApiClient` passes its own client, so
+  /// closing the `ApiClient` also stops its token requests.
+  final Client? httpClient;
+
   /// Constructor
   OAuth(
       {this.clientId,
       this.clientSecret,
       required this.tokenUrl,
-      this.accessToken}) {
+      this.accessToken,
+      this.httpClient}) {
     if (!((clientId != null && clientSecret != null) || accessToken != null)) {
       throw ApiException(
           0, "clientId and clientSecret or accessToken required");
@@ -59,7 +65,9 @@ class OAuth implements Authentication {
       ..fields['client_id'] = clientId!
       ..fields['client_secret'] = clientSecret!;
 
-    final response = await request.send();
+    final client = httpClient;
+    final response =
+        client == null ? await request.send() : await client.send(request);
     final responseText = await response.stream.bytesToString();
     if (response.statusCode != 200) {
       throw ApiException(response.statusCode, responseText);

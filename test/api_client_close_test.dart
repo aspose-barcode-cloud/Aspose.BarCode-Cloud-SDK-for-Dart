@@ -1,52 +1,43 @@
 // Offline tests for the `ApiClient` lifetime: `close` and `use`.
 //
-// A loopback HTTP server stands in for both the API and the token endpoint.
-// It answers every request and records its path, so a test can tell an open
-// client from a closed one and see which requests reached the network.
+// A loopback server stands in for both the API and the token endpoint, so a
+// test can tell an open client from a closed one and see which requests
+// reached the network.
 
-import 'dart:io';
+import 'dart:async';
 
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 import 'package:test/test.dart';
 
+import 'loopback_api.dart';
+
 void main() {
-  late HttpServer server;
-  final requestPaths = <String>[];
+  late LoopbackApi api;
 
-  setUpAll(() async {
-    server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
-    server.listen((request) {
-      requestPaths.add(request.uri.path);
-      final body = request.uri.path == '/connect/token'
-          ? '{"access_token":"token","expires_in":3600}'
-          : '{"barcodes":[]}';
-      request.response
-        ..headers.contentType = ContentType.json
-        ..write(body)
-        ..close();
-    });
-  });
+  setUpAll(() async => api = await LoopbackApi.start());
+  tearDownAll(() => api.close());
+  setUp(() => api.reset());
 
-  tearDownAll(() => server.close(force: true));
+  ApiClient newClient() => ApiClient(api.tokenConfiguration());
 
-  setUp(requestPaths.clear);
-
-  String serverUrl() => 'http://${server.address.host}:${server.port}';
-
-  ApiClient newClient() => ApiClient(Configuration(
-        accessToken: 'fake-token',
-        basePath: serverUrl(),
-      ));
-
-  ApiClient newClientWithCredentials() => ApiClient(Configuration(
-        clientId: 'client-id',
-        clientSecret: 'client-secret',
-        basePath: serverUrl(),
-        tokenUrl: '${serverUrl()}/connect/token',
-      ));
+  ApiClient newClientWithCredentials() =>
+      ApiClient(api.credentialsConfiguration());
 
   Future<BarcodeResponseList> scan(ApiClient client) =>
       ScanApi(client).scan('https://example.com/qr.png');
+
+  /// Holds the response to the first request for [path] until the returned
+  /// completer completes; [received] completes when that request arrives.
+  Completer<void> holdResponse(String path, Completer<void> received) {
+    final release = Completer<void>();
+    api.beforeResponse = (uri) async {
+      if (uri.path == path && !received.isCompleted) {
+        received.complete();
+        await release.future;
+      }
+    };
+    return release;
+  }
 
   final failsAsClosed = throwsA(isA<ApiException>()
       .having((e) => e.message, 'message', 'ApiClient is closed'));
@@ -68,19 +59,59 @@ void main() {
       await expectLater(scan(client), failsAsClosed);
     });
 
-    test('an open client fetches a token before the request', () async {
-      final client = newClientWithCredentials();
-
+    test('close releases the keep-alive connection', () async {
+      expect(await api.connectionsLeftOpen(), isZero,
+          reason: 'an earlier test left a connection open');
+      final client = newClient();
       await scan(client);
+      expect(await api.connectionsLeftOpen(), equals(1));
 
-      expect(requestPaths, equals(['/connect/token', '/barcode/scan']));
+      client.close();
+
+      expect(await api.connectionsLeftOpen(), isZero);
+    });
+
+    test('an open client fetches a token before the request', () async {
+      await newClientWithCredentials().use(scan);
+
+      expect(api.paths, equals([LoopbackApi.tokenPath, '/barcode/scan']));
     });
 
     test('a closed client sends nothing, not even a token request', () async {
       final client = newClientWithCredentials()..close();
 
       await expectLater(scan(client), failsAsClosed);
-      expect(requestPaths, isEmpty);
+      expect(api.paths, isEmpty);
+    });
+
+    test('close aborts a pending token request', () async {
+      final tokenRequested = Completer<void>();
+      final release = holdResponse(LoopbackApi.tokenPath, tokenRequested);
+      final client = newClientWithCredentials();
+      // The token response is held until after the check, so the call ends
+      // in time only if close() aborts the token request itself.
+      final outcome = expectLater(
+          scan(client).timeout(const Duration(seconds: 2)), failsAsClosed);
+
+      await tokenRequested.future;
+      client.close();
+
+      await outcome;
+      release.complete();
+      expect(api.paths, equals([LoopbackApi.tokenPath]));
+    });
+
+    test('close aborts a request in flight with ApiException', () async {
+      final scanRequested = Completer<void>();
+      final release = holdResponse('/barcode/scan', scanRequested);
+      final client = newClient();
+      final outcome = expectLater(scan(client), failsAsClosed);
+
+      await scanRequested.future;
+      client.close();
+      release.complete();
+
+      await outcome;
     });
 
     test('use returns the action result and then closes the client', () async {
