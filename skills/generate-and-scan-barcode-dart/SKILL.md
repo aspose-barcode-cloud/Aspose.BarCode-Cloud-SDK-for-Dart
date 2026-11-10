@@ -114,6 +114,8 @@ Key method names:
 
 ## Common patterns
 
+In these examples, `clientId` and `clientSecret` stand for your credentials from https://dashboard.aspose.cloud/applications.
+
 Generate and save a QR code:
 
 ```dart
@@ -133,8 +135,9 @@ Future<void> main() async {
     final Uint8List image = await api.generate(
       EncodeBarcodeType.QR,
       'hello from Dart',
-      imageFormat: BarcodeImageFormat.Png,
-      textLocation: CodeLocation.None,
+      barcodeImageParams: BarcodeImageParams()
+        ..imageFormat = BarcodeImageFormat.Png
+        ..textLocation = CodeLocation.None,
     );
 
     await File('qr.png').writeAsBytes(image);
@@ -151,6 +154,10 @@ import 'dart:io';
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 
 Future<void> main() async {
+  final config = Configuration(
+    clientId: clientId,
+    clientSecret: clientSecret,
+  );
   final bytes = await File('many-types.png').readAsBytes();
 
   final request = RecognizeBase64Request(
@@ -176,6 +183,10 @@ import 'dart:io';
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 
 Future<void> main() async {
+  final config = Configuration(
+    clientId: clientId,
+    clientSecret: clientSecret,
+  );
   final bytes = await File('unknown.png').readAsBytes();
   final result = await ApiClient(config)
       .use((client) => ScanApi(client).scanMultipart(bytes));
