@@ -18,27 +18,28 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final file = File(
-    "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png",
-  );
+    final file = File(
+      "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png",
+    );
 
-  final generateParams = GenerateParams(
-    EncodeBarcodeType.Pdf417,
-    EncodeData("Aspose.BarCode.Cloud", EncodeDataType.StringData),
-    BarcodeImageParams()
-      ..imageFormat = BarcodeImageFormat.Png
-      ..imageHeight = 2
-      ..imageWidth = 3
-      ..resolution = 96
-      ..units = GraphicsUnit.Inch,
-  );
+    final generateParams = GenerateParams(
+      EncodeBarcodeType.Pdf417,
+      EncodeData("Aspose.BarCode.Cloud", EncodeDataType.StringData),
+      BarcodeImageParams()
+        ..imageFormat = BarcodeImageFormat.Png
+        ..imageHeight = 2
+        ..imageWidth = 3
+        ..resolution = 96
+        ..units = GraphicsUnit.Inch,
+    );
 
-  final Uint8List response = await generateApi.generateBody(generateParams);
+    final Uint8List response = await generateApi.generateBody(generateParams);
 
-  file.writeAsBytes(response);
+    file.writeAsBytes(response);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }

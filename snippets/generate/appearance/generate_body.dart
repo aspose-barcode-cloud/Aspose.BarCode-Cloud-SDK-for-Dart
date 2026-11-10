@@ -18,34 +18,35 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final file = File(
-    "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}QrCustom.jpeg",
-  );
+    final file = File(
+      "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}QrCustom.jpeg",
+    );
 
-  final imageParams = BarcodeImageParams()
-    ..foregroundColor = "#FF0000"
-    ..backgroundColor = "#FFFF00"
-    ..imageFormat = BarcodeImageFormat.Jpeg
-    ..rotationAngle = 90;
+    final imageParams = BarcodeImageParams()
+      ..foregroundColor = "#FF0000"
+      ..backgroundColor = "#FFFF00"
+      ..imageFormat = BarcodeImageFormat.Jpeg
+      ..rotationAngle = 90;
 
-  final generateParams = GenerateParams(
-      EncodeBarcodeType.QR,
-      EncodeData("Aspose", EncodeDataType.StringData),
-      imageParams,
-      QrParams(
-        QREncodeMode.Auto,
-        QRErrorLevel.LevelM,
-        QRVersion.Auto,
-        null,
-        0.75,
-      ));
+    final generateParams = GenerateParams(
+        EncodeBarcodeType.QR,
+        EncodeData("Aspose", EncodeDataType.StringData),
+        imageParams,
+        QrParams(
+          QREncodeMode.Auto,
+          QRErrorLevel.LevelM,
+          QRVersion.Auto,
+          null,
+          0.75,
+        ));
 
-  final Uint8List response = await generateApi.generateBody(generateParams);
+    final Uint8List response = await generateApi.generateBody(generateParams);
 
-  file.writeAsBytes(response);
+    file.writeAsBytes(response);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }

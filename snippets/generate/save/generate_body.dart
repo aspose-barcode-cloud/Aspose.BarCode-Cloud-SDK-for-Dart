@@ -21,22 +21,23 @@ Future<void> main() async {
       "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png";
 
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final generateParams = GenerateParams(
-    EncodeBarcodeType.Pdf417,
-    EncodeData("Aspose.BarCode.Cloud", EncodeDataType.StringData),
-    BarcodeImageParams()
-      ..foregroundColor = "#FF5733"
-      ..backgroundColor = "#FFFFFF"
-      ..imageFormat = BarcodeImageFormat.Jpeg,
-  );
+    final generateParams = GenerateParams(
+      EncodeBarcodeType.Pdf417,
+      EncodeData("Aspose.BarCode.Cloud", EncodeDataType.StringData),
+      BarcodeImageParams()
+        ..foregroundColor = "#FF5733"
+        ..backgroundColor = "#FFFFFF"
+        ..imageFormat = BarcodeImageFormat.Jpeg,
+    );
 
-  final Uint8List response = await generateApi.generateBody(generateParams);
+    final Uint8List response = await generateApi.generateBody(generateParams);
 
-  final file = File(fileName);
-  file.writeAsBytes(response);
+    final file = File(fileName);
+    file.writeAsBytes(response);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }

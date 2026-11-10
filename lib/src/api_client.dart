@@ -1,5 +1,6 @@
 // ignore_for_file: library_prefixes, constant_identifier_names
 
+import 'dart:async' show FutureOr;
 import 'dart:convert' show json;
 
 import 'package:http/http.dart' as Http show Client, Response;
@@ -49,6 +50,35 @@ class ApiClient {
   /// Add default header value by key
   void addDefaultHeader(String key, String value) {
     _defaultHeaderMap[key] = value;
+  }
+
+  /// Closes the underlying HTTP client and its keep-alive connections.
+  ///
+  /// Until the client is closed, its idle connections keep a command-line
+  /// program running for up to 15 seconds after its last request. Call
+  /// [close] once the client is no longer needed, or let [use] do it.
+  /// Requests made after [close] fail. Calling [close] again does nothing.
+  void close() {
+    _httpClient.close();
+  }
+
+  /// Runs [action] with this client and then closes the client,
+  /// like a `with` block in Python.
+  ///
+  /// The client is closed even if [action] throws.
+  /// Returns the result of [action].
+  ///
+  /// ```dart
+  /// final recognized = await ApiClient(config).use((client) {
+  ///   return ScanApi(client).scanMultipart(imageBytes);
+  /// });
+  /// ```
+  Future<T> use<T>(FutureOr<T> Function(ApiClient client) action) async {
+    try {
+      return await action(this);
+    } finally {
+      close();
+    }
   }
 
   dynamic _deserialize(dynamic value, String targetType) {

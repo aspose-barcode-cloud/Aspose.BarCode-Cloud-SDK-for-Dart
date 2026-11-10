@@ -17,16 +17,18 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final recognizeApi = RecognizeApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final recognizeApi = RecognizeApi(apiClient);
 
-  final result = await recognizeApi.recognize(
-    DecodeBarcodeType.QR,
-    "https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png",
-  );
+    final result = await recognizeApi.recognize(
+      DecodeBarcodeType.QR,
+      "https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png",
+    );
 
-  if (result.barcodes.isNotEmpty) {
-    print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
-  } else {
-    print("No barcodes were recognized.");
-  }
+    if (result.barcodes.isNotEmpty) {
+      print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+    } else {
+      print("No barcodes were recognized.");
+    }
+  });
 }

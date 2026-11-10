@@ -17,22 +17,24 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final fileName =
-      "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Code128.jpeg";
+    final fileName =
+        "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Code128.jpeg";
 
-  final Uint8List response = await generateApi.generate(
-    EncodeBarcodeType.Code128,
-    "Aspose.BarCode.Cloud",
-    barcodeImageParams: BarcodeImageParams()
-      ..imageFormat = BarcodeImageFormat.Png,
-    code128Params: Code128Params()..code128EncodeMode = Code128EncodeMode.Auto,
-  );
+    final Uint8List response = await generateApi.generate(
+      EncodeBarcodeType.Code128,
+      "Aspose.BarCode.Cloud",
+      barcodeImageParams: BarcodeImageParams()
+        ..imageFormat = BarcodeImageFormat.Png,
+      code128Params: Code128Params()
+        ..code128EncodeMode = Code128EncodeMode.Auto,
+    );
 
-  final file = File(fileName);
-  file.writeAsBytes(response);
+    final file = File(fileName);
+    file.writeAsBytes(response);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }

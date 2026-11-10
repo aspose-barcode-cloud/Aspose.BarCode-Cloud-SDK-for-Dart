@@ -21,18 +21,19 @@ Future<void> main() async {
       "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png";
 
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final postParams = GenerateParams(
-    EncodeBarcodeType.Pdf417,
-    EncodeData("QXNwb3NlLkJhckNvZGUuQ2xvdWQ=", EncodeDataType.Base64Bytes),
-  );
+    final postParams = GenerateParams(
+      EncodeBarcodeType.Pdf417,
+      EncodeData("QXNwb3NlLkJhckNvZGUuQ2xvdWQ=", EncodeDataType.Base64Bytes),
+    );
 
-  final Uint8List response = await generateApi.generateBody(postParams);
+    final Uint8List response = await generateApi.generateBody(postParams);
 
-  final file = File(fileName);
-  file.writeAsBytes(response);
+    final file = File(fileName);
+    file.writeAsBytes(response);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }
