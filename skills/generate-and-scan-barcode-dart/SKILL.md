@@ -114,7 +114,7 @@ Key method names:
 
 ## Common patterns
 
-In these examples, `clientId` and `clientSecret` stand for your credentials from https://dashboard.aspose.cloud/applications.
+In these examples, `clientId` and `clientSecret` stand for your credentials from the [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/applications).
 
 Generate and save a QR code:
 
