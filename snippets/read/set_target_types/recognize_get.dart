@@ -16,14 +16,16 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final recognizeApi = RecognizeApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final recognizeApi = RecognizeApi(apiClient);
 
-  final fileUrl =
-      "https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png";
+    final fileUrl =
+        "https://products.aspose.app/barcode/scan/img/how-to/scan/step2.png";
 
-  final BarcodeResponseList result =
-      await recognizeApi.recognize(DecodeBarcodeType.MostCommonlyUsed, fileUrl);
+    final BarcodeResponseList result = await recognizeApi.recognize(
+        DecodeBarcodeType.MostCommonlyUsed, fileUrl);
 
-  print(
-      "File '$fileUrl' recognized, result: '${result.barcodes[0].barcodeValue}'");
+    print(
+        "File '$fileUrl' recognized, result: '${result.barcodes[0].barcodeValue}'");
+  });
 }

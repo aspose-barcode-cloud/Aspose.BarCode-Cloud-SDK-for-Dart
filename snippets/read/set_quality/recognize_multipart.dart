@@ -17,18 +17,20 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final recognizeApi = RecognizeApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final recognizeApi = RecognizeApi(apiClient);
 
-  final file = await File(
-          "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png")
-      .readAsBytes();
+    final file = await File(
+            "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png")
+        .readAsBytes();
 
-  final BarcodeResponseList result = await recognizeApi.recognizeMultipart(
-    DecodeBarcodeType.Aztec,
-    file,
-    recognitionMode: RecognitionMode.Normal,
-    recognitionImageKind: RecognitionImageKind.ScannedDocument,
-  );
+    final BarcodeResponseList result = await recognizeApi.recognizeMultipart(
+      DecodeBarcodeType.Aztec,
+      file,
+      recognitionMode: RecognitionMode.Normal,
+      recognitionImageKind: RecognitionImageKind.ScannedDocument,
+    );
 
-  print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+    print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+  });
 }

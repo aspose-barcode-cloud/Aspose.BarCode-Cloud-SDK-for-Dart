@@ -18,23 +18,24 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final fileName =
-      '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png';
+    final fileName =
+        '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png';
 
-  final Uint8List response = await generateApi.generateMultipart(
-    EncodeBarcodeType.Aztec,
-    "Aspose.BarCode.Cloud",
-    barcodeImageParams: BarcodeImageParams()
-      ..imageHeight = 200
-      ..imageWidth = 200
-      ..resolution = 150
-      ..units = GraphicsUnit.Point,
-  );
+    final Uint8List response = await generateApi.generateMultipart(
+      EncodeBarcodeType.Aztec,
+      "Aspose.BarCode.Cloud",
+      barcodeImageParams: BarcodeImageParams()
+        ..imageHeight = 200
+        ..imageWidth = 200
+        ..resolution = 150
+        ..units = GraphicsUnit.Point,
+    );
 
-  await File(fileName).writeAsBytes(response);
+    await File(fileName).writeAsBytes(response);
 
-  print("File '$fileName' generated.");
+    print("File '$fileName' generated.");
+  });
 }

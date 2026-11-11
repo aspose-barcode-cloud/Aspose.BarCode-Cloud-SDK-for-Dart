@@ -8,10 +8,11 @@
 // enums, collections and `ApiException` wrapping of failures) and the
 // `api_helper` parameter formatting functions — to raise core line coverage.
 //
-// The `lib/src/api/` classes are only exercised by the live `*_api_test.dart`
-// suites (ApiClient constructs its own `Http.Client`, so they cannot be
-// covered offline), which means the 80% gate in `scripts/coverage.sh` (and
-// therefore `make cover`) still requires live API credentials to pass.
+// The `lib/src/api/` classes are exercised mostly by the live
+// `*_api_test.dart` suites. Only `ScanApi.scan` and `GenerateApi.generate`
+// also run offline, against the loopback server in `loopback_api.dart`.
+// `make cover` runs the live suites too, so it still requires live API
+// credentials to pass.
 //
 // ignore_for_file: non_constant_identifier_names
 

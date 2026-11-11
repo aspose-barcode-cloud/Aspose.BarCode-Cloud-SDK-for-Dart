@@ -18,28 +18,30 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final recognizeApi = RecognizeApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final recognizeApi = RecognizeApi(apiClient);
 
-  final fileName = File(
-          "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png")
-      .absolute
-      .path;
-  final fileBytes = File(fileName).readAsBytesSync();
-  final imageBase64 = base64Encode(fileBytes);
+    final fileName = File(
+            "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}aztec.png")
+        .absolute
+        .path;
+    final fileBytes = File(fileName).readAsBytesSync();
+    final imageBase64 = base64Encode(fileBytes);
 
-  final recognizeBase64Request = RecognizeBase64Request(
-    [DecodeBarcodeType.Aztec, DecodeBarcodeType.QR],
-    imageBase64,
-  )..recognitionImageKind = RecognitionImageKind.ScannedDocument;
+    final recognizeBase64Request = RecognizeBase64Request(
+      [DecodeBarcodeType.Aztec, DecodeBarcodeType.QR],
+      imageBase64,
+    )..recognitionImageKind = RecognitionImageKind.ScannedDocument;
 
-  final BarcodeResponseList result =
-      await recognizeApi.recognizeBase64(recognizeBase64Request);
+    final BarcodeResponseList result =
+        await recognizeApi.recognizeBase64(recognizeBase64Request);
 
-  if (result.barcodes.isNotEmpty) {
-    final barcode = result.barcodes[0];
-    print(
-        "File '$fileName' recognized, results: value: '${barcode.barcodeValue}', type: ${barcode.type}");
-  } else {
-    print("File '$fileName' recognized, but no barcodes found.");
-  }
+    if (result.barcodes.isNotEmpty) {
+      final barcode = result.barcodes[0];
+      print(
+          "File '$fileName' recognized, results: value: '${barcode.barcodeValue}', type: ${barcode.type}");
+    } else {
+      print("File '$fileName' recognized, but no barcodes found.");
+    }
+  });
 }

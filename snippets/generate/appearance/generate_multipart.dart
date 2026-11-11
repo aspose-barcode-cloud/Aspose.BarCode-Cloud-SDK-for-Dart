@@ -18,26 +18,27 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final file = File(
-    "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.svg",
-  );
+    final file = File(
+      "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.svg",
+    );
 
-  final Uint8List barcodeStream = await generateApi.generateMultipart(
-    EncodeBarcodeType.Pdf417,
-    "Aspose.BarCode.Cloud",
-    barcodeImageParams: BarcodeImageParams()
-      ..textLocation = CodeLocation.Above
-      ..imageFormat = BarcodeImageFormat.Svg,
-    pdf417Params: Pdf417Params()
-      ..pdf417EncodeMode = Pdf417EncodeMode.Auto
-      ..pdf417ErrorLevel = Pdf417ErrorLevel.Level2
-      ..pdf417AspectRatio = 3,
-  );
+    final Uint8List barcodeStream = await generateApi.generateMultipart(
+      EncodeBarcodeType.Pdf417,
+      "Aspose.BarCode.Cloud",
+      barcodeImageParams: BarcodeImageParams()
+        ..textLocation = CodeLocation.Above
+        ..imageFormat = BarcodeImageFormat.Svg,
+      pdf417Params: Pdf417Params()
+        ..pdf417EncodeMode = Pdf417EncodeMode.Auto
+        ..pdf417ErrorLevel = Pdf417ErrorLevel.Level2
+        ..pdf417AspectRatio = 3,
+    );
 
-  file.writeAsBytes(barcodeStream);
+    await file.writeAsBytes(barcodeStream);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }

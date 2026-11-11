@@ -17,13 +17,15 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final scanApi = ScanApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final scanApi = ScanApi(apiClient);
 
-  final file = await File(
-          "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}qr.png")
-      .readAsBytes();
+    final file = await File(
+            "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}qr.png")
+        .readAsBytes();
 
-  final BarcodeResponseList result = await scanApi.scanMultipart(file);
+    final BarcodeResponseList result = await scanApi.scanMultipart(file);
 
-  print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+    print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+  });
 }

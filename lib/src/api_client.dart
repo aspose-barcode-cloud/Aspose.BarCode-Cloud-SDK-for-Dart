@@ -1,8 +1,9 @@
 // ignore_for_file: library_prefixes, constant_identifier_names
 
+import 'dart:async' show FutureOr;
 import 'dart:convert' show json;
 
-import 'package:http/http.dart' as Http show Client, Response;
+import 'package:http/http.dart' as Http show Client, ClientException, Response;
 
 import 'http/multipart_request_plus.dart';
 import '../aspose_barcode_cloud.dart';
@@ -16,6 +17,7 @@ const SDK_VERSION = "4.26.10";
 class ApiClient {
   late final String _basePath;
   final _httpClient = Http.Client();
+  bool _closed = false;
 
   /// SDK header name
   static const String API_SDK_HEADER = "x-aspose-client";
@@ -43,12 +45,53 @@ class ApiClient {
         clientId: config.clientId,
         clientSecret: config.clientSecret,
         accessToken: config.accessToken,
-        tokenUrl: config.tokenUrl);
+        tokenUrl: config.tokenUrl,
+        httpClient: _httpClient);
   }
 
   /// Add default header value by key
   void addDefaultHeader(String key, String value) {
     _defaultHeaderMap[key] = value;
+  }
+
+  /// Closes the underlying HTTP client and its keep-alive connections.
+  ///
+  /// Until the client is closed, its idle connections keep a command-line
+  /// program running for up to 15 seconds after its last request. Call
+  /// [close] once the client is no longer needed, or let [use] do it.
+  /// Requests made after [close] throw an [ApiException] without contacting
+  /// the server. Requests still in flight, token requests included, are
+  /// aborted and fail with the same [ApiException].
+  /// Calling [close] again does nothing.
+  void close() {
+    _closed = true;
+    _httpClient.close();
+  }
+
+  /// Runs [action] with this client and then closes the client,
+  /// like a `with` block in Python.
+  ///
+  /// The client is closed even if [action] throws.
+  /// Returns the result of [action].
+  /// Don't call [use] on a client that other code still needs.
+  ///
+  /// ```dart
+  /// final recognized = await ApiClient(config).use((client) {
+  ///   return ScanApi(client).scanMultipart(imageBytes);
+  /// });
+  /// ```
+  Future<T> use<T>(FutureOr<T> Function(ApiClient client) action) async {
+    try {
+      return await action(this);
+    } finally {
+      close();
+    }
+  }
+
+  void _ensureOpen() {
+    if (_closed) {
+      throw ApiException(0, 'ApiClient is closed');
+    }
   }
 
   dynamic _deserialize(dynamic value, String targetType) {
@@ -183,9 +226,33 @@ class ApiClient {
       Map<String, String> formParams,
       String contentType,
       List<String> authNames) async {
-    await _updateParamsForAuth(queryParams, headerParams);
+    _ensureOpen();
+    try {
+      return await _send(path, method, queryParams, body, headerParams,
+          formParams, contentType);
+    } on Http.ClientException catch (e, stack) {
+      // close() aborts requests in flight, token requests included
+      if (_closed) {
+        throw ApiException.withInner(0, 'ApiClient is closed', e, stack);
+      }
+      rethrow;
+    }
+  }
 
-    final ps = queryParams.map((p) => '${p.name}=${p.value}');
+  Future<Http.Response> _send(
+      String path,
+      String method,
+      List<QueryParam> queryParams,
+      Object? body,
+      Map<String, String> headerParams,
+      Map<String, String> formParams,
+      String contentType) async {
+    await _updateParamsForAuth(queryParams, headerParams);
+    // close() may have run while a token was being fetched
+    _ensureOpen();
+
+    final ps = queryParams.map((p) =>
+        '${Uri.encodeQueryComponent(p.name)}=${Uri.encodeQueryComponent(p.value)}');
     final String queryString = ps.isNotEmpty ? '?${ps.join('&')}' : '';
 
     final String url = _basePath + path + queryString;
