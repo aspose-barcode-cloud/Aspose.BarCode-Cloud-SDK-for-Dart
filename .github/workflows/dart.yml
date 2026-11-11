@@ -32,7 +32,6 @@ jobs:
 
       - name: Test with coverage (>= 80% line gate)
         run: |
-          chmod +x scripts/*
           make cover
 
       - name: Upload coverage report
