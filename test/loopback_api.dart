@@ -27,7 +27,9 @@ class LoopbackApi {
       LoopbackApi._(await HttpServer.bind(InternetAddress.loopbackIPv4, 0));
 
   /// Base URL of the server.
-  String get url => 'http://${_server.address.host}:${_server.port}';
+  String get url =>
+      Uri(scheme: 'http', host: _server.address.host, port: _server.port)
+          .toString();
 
   /// Paths of the received requests, in order.
   List<String> get paths => [for (final uri in uris) uri.path];
