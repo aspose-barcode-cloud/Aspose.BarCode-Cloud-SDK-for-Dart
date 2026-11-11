@@ -20,15 +20,20 @@ import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 Prefer this setup:
 
 ```dart
-final client = ApiClient(Configuration(
+final config = Configuration(
   clientId: clientId,
   clientSecret: clientSecret,
-));
+);
 
-final generateApi = GenerateApi(client);
-final recognizeApi = RecognizeApi(client);
-final scanApi = ScanApi(client);
+await ApiClient(config).use((client) async {
+  final generateApi = GenerateApi(client);
+  final recognizeApi = RecognizeApi(client);
+  final scanApi = ScanApi(client);
+  // ...
+});
 ```
+
+`use` closes the client when the callback completes, like `with` in Python. Call `client.close()` yourself when the client must outlive one block.
 
 If the task is repo maintenance inside `submodules/dart`, read `references/repo-workflow.md`. If the task needs the closest existing example or snippet, read `references/snippet-map.md`.
 
@@ -39,21 +44,21 @@ Use one of these two patterns:
 1. Let the SDK fetch OAuth tokens for you.
 
 ```dart
-final client = ApiClient(Configuration(
+final config = Configuration(
   clientId: clientId,
   clientSecret: clientSecret,
-));
+);
 ```
 
 2. Inject a pre-fetched bearer token.
 
 ```dart
-final client = ApiClient(Configuration(
+final config = Configuration(
   accessToken: accessToken,
-));
+);
 ```
 
-`ApiClient` always creates `OAuth` internally. If neither `(clientId, clientSecret)` nor `accessToken` is present, construction fails with `ApiException(0, "clientId and clientSecret or accessToken required")`.
+Then run the work in `ApiClient(config).use(...)` as in the quick start. `ApiClient` always creates `OAuth` internally. If neither `(clientId, clientSecret)` nor `accessToken` is present, construction fails with `ApiException(0, "clientId and clientSecret or accessToken required")`.
 
 Inside this repo, tests use:
 
@@ -105,8 +110,11 @@ Key method names:
 7. API failures throw `ApiException`. Use `e.code`, `e.message`, and `e.getDetails()` when the caller needs HTTP status or server-side validation details.
 8. `Configuration.fromEnv` is narrower than the JSON loader: `Configuration.load(...)` reads `clientId`, `clientSecret`, `basePath`, `tokenUrl`, and `accessToken`, but `fromEnv(...)` currently fills only `accessToken`.
 9. The package supports Dart and Flutter, but examples that use `dart:io` file APIs are not portable to Flutter web. Keep that distinction clear when writing snippets.
+10. `ApiClient` owns an `http.Client` with keep-alive connections. A command-line program that never closes it waits about 15 seconds after its last request before it exits. Wrap the work in `ApiClient(config).use(...)` or call `close()`; requests after `close()` throw `ApiException(0, "ApiClient is closed")`.
 
 ## Common patterns
+
+In these examples, `clientId` and `clientSecret` stand for your credentials from https://dashboard.aspose.cloud/applications.
 
 Generate and save a QR code:
 
@@ -117,20 +125,23 @@ import 'dart:typed_data';
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 
 Future<void> main() async {
-  final client = ApiClient(Configuration(
+  final config = Configuration(
     clientId: clientId,
     clientSecret: clientSecret,
-  ));
-
-  final api = GenerateApi(client);
-  final Uint8List image = await api.generate(
-    EncodeBarcodeType.QR,
-    'hello from Dart',
-    imageFormat: BarcodeImageFormat.Png,
-    textLocation: CodeLocation.None,
   );
 
-  await File('qr.png').writeAsBytes(image);
+  await ApiClient(config).use((client) async {
+    final api = GenerateApi(client);
+    final Uint8List image = await api.generate(
+      EncodeBarcodeType.QR,
+      'hello from Dart',
+      barcodeImageParams: BarcodeImageParams()
+        ..imageFormat = BarcodeImageFormat.Png
+        ..textLocation = CodeLocation.None,
+    );
+
+    await File('qr.png').writeAsBytes(image);
+  });
 }
 ```
 
@@ -143,6 +154,10 @@ import 'dart:io';
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 
 Future<void> main() async {
+  final config = Configuration(
+    clientId: clientId,
+    clientSecret: clientSecret,
+  );
   final bytes = await File('many-types.png').readAsBytes();
 
   final request = RecognizeBase64Request(
@@ -152,7 +167,8 @@ Future<void> main() async {
     RecognitionImageKind.ClearImage,
   );
 
-  final result = await RecognizeApi(client).recognizeBase64(request);
+  final result = await ApiClient(config)
+      .use((client) => RecognizeApi(client).recognizeBase64(request));
   for (final barcode in result.barcodes) {
     print('${barcode.type}: ${barcode.barcodeValue}');
   }
@@ -167,8 +183,13 @@ import 'dart:io';
 import 'package:aspose_barcode_cloud/aspose_barcode_cloud.dart';
 
 Future<void> main() async {
+  final config = Configuration(
+    clientId: clientId,
+    clientSecret: clientSecret,
+  );
   final bytes = await File('unknown.png').readAsBytes();
-  final result = await ScanApi(client).scanMultipart(bytes);
+  final result = await ApiClient(config)
+      .use((client) => ScanApi(client).scanMultipart(bytes));
 
   for (final barcode in result.barcodes) {
     print('${barcode.type}: ${barcode.barcodeValue}');
@@ -184,7 +205,7 @@ Read `references/snippet-map.md` when the task needs the closest existing patter
 
 ## Final checklist
 
-1. Use `package:aspose_barcode_cloud/aspose_barcode_cloud.dart` and build APIs from `ApiClient(Configuration(...))`.
+1. Use `package:aspose_barcode_cloud/aspose_barcode_cloud.dart` and build APIs from `ApiClient(Configuration(...))`, closing the client with `use(...)` or `close()`.
 2. Choose credential mode deliberately: `(clientId, clientSecret)` for SDK-managed tokens or `accessToken` for pre-fetched bearer tokens.
 3. Pick GET only for public `fileUrl`s, multipart for local bytes, and base64 body variants when JSON transport is required.
 4. Base64-encode image bytes yourself before calling `recognizeBase64` or `scanBase64`.

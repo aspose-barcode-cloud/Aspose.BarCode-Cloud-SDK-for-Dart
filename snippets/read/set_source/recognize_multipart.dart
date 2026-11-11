@@ -17,20 +17,22 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final recognizeApi = RecognizeApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final recognizeApi = RecognizeApi(apiClient);
 
-  final file = await File(
-          '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}qr.png')
-      .readAsBytes();
+    final file = await File(
+            '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}qr.png')
+        .readAsBytes();
 
-  final BarcodeResponseList result =
-      await recognizeApi.recognizeMultipart(DecodeBarcodeType.QR, file);
+    final BarcodeResponseList result =
+        await recognizeApi.recognizeMultipart(DecodeBarcodeType.QR, file);
 
-  if (result.barcodes.isNotEmpty) {
-    final barcode = result.barcodes[0];
-    print(
-        "File recognized, results: value: '${barcode.barcodeValue}', type: ${barcode.type}");
-  } else {
-    print("File recognized, but no barcodes found.");
-  }
+    if (result.barcodes.isNotEmpty) {
+      final barcode = result.barcodes[0];
+      print(
+          "File recognized, results: value: '${barcode.barcodeValue}', type: ${barcode.type}");
+    } else {
+      print("File recognized, but no barcodes found.");
+    }
+  });
 }

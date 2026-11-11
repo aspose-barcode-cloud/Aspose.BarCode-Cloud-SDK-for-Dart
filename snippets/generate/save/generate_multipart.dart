@@ -20,14 +20,15 @@ Future<void> main() async {
   final fileName =
       "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png";
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final Uint8List response = await generateApi.generateMultipart(
-      EncodeBarcodeType.Pdf417, "Aspose.BarCode.Cloud");
+    final Uint8List response = await generateApi.generateMultipart(
+        EncodeBarcodeType.Pdf417, "Aspose.BarCode.Cloud");
 
-  final file = File(fileName);
-  file.writeAsBytes(response);
+    final file = File(fileName);
+    await file.writeAsBytes(response);
 
-  print("File '${file.path}' generated.");
+    print("File '${file.path}' generated.");
+  });
 }

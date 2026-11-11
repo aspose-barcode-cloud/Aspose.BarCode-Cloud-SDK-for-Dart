@@ -17,14 +17,16 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final config = makeConfiguration();
-  final recognizeApi = RecognizeApi(ApiClient(config));
+  await ApiClient(config).use((apiClient) async {
+    final recognizeApi = RecognizeApi(apiClient);
 
-  final file = await File(
-          "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png")
-      .readAsBytes();
+    final file = await File(
+            "${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}Pdf417.png")
+        .readAsBytes();
 
-  final BarcodeResponseList result =
-      await recognizeApi.recognizeMultipart(DecodeBarcodeType.Pdf417, file);
+    final BarcodeResponseList result =
+        await recognizeApi.recognizeMultipart(DecodeBarcodeType.Pdf417, file);
 
-  print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+    print("File recognized, result: '${result.barcodes[0].barcodeValue}'");
+  });
 }

@@ -18,31 +18,32 @@ Configuration makeConfiguration() {
 
 Future<void> main() async {
   final configuration = makeConfiguration();
-  final apiClient = ApiClient(configuration);
-  final generateApi = GenerateApi(apiClient);
+  await ApiClient(configuration).use((apiClient) async {
+    final generateApi = GenerateApi(apiClient);
 
-  final fileName =
-      '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}qr.png';
+    final fileName =
+        '${Directory.current.path}${Platform.pathSeparator}test_data${Platform.pathSeparator}qr.png';
 
-  final Uint8List response = await generateApi.generate(
-    EncodeBarcodeType.QR,
-    "Aspose.BarCode.Cloud",
-    barcodeImageParams: BarcodeImageParams()
-      ..imageFormat = BarcodeImageFormat.Png
-      ..foregroundColor = "Black"
-      ..backgroundColor = "White"
-      ..textLocation = CodeLocation.Below
-      ..resolution = 300
-      ..imageHeight = 200
-      ..imageWidth = 200,
-    qrParams: QrParams()
-      ..qrEncodeMode = QREncodeMode.Auto
-      ..qrErrorLevel = QRErrorLevel.LevelM
-      ..qrVersion = QRVersion.Auto
-      ..qrAspectRatio = 0.75,
-  );
+    final Uint8List response = await generateApi.generate(
+      EncodeBarcodeType.QR,
+      "Aspose.BarCode.Cloud",
+      barcodeImageParams: BarcodeImageParams()
+        ..imageFormat = BarcodeImageFormat.Png
+        ..foregroundColor = "Black"
+        ..backgroundColor = "White"
+        ..textLocation = CodeLocation.Below
+        ..resolution = 300
+        ..imageHeight = 200
+        ..imageWidth = 200,
+      qrParams: QrParams()
+        ..qrEncodeMode = QREncodeMode.Auto
+        ..qrErrorLevel = QRErrorLevel.LevelM
+        ..qrVersion = QRVersion.Auto
+        ..qrAspectRatio = 0.75,
+    );
 
-  await File(fileName).writeAsBytes(response);
+    await File(fileName).writeAsBytes(response);
 
-  print("File '$fileName' generated.");
+    print("File '$fileName' generated.");
+  });
 }
