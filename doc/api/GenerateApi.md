@@ -10,6 +10,7 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**generate**](GenerateApi.md#generate) | **GET** /barcode/generate/{barcodeType} | Generate a barcode using a GET request with parameters in the route and query string.
+[**generateBatch**](GenerateApi.md#generateBatch) | **POST** /barcode/generate-batch | Generate multiple barcodes and return them in a ZIP, TAR, or TAR.GZ archive.
 [**generateBody**](GenerateApi.md#generateBody) | **POST** /barcode/generate-body | Generate a barcode using a POST request with parameters in the request body in JSON or XML format.
 [**generateMultipart**](GenerateApi.md#generateMultipart) | **POST** /barcode/generate-multipart | Generate a barcode using a POST request with parameters in a multipart form.
 
@@ -67,6 +68,31 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: image/png, image/bmp, image/gif, image/jpeg, image/svg+xml, image/tiff, application/json, application/xml
+
+
+# **generateBatch**
+> MultipartFile generateBatch(batchGenerateRequest)
+
+Generate multiple barcodes and return them in a ZIP, TAR, or TAR.GZ archive.
+
+### Parameters
+
+Name | Type | Description  | Notes
+---- | ---- | ------------ | -----
+ **batchGenerateRequest** | [**BatchGenerateRequest**](BatchGenerateRequest.md)| Batch generation request in JSON or XML format. | 
+
+### Return type
+
+[**MultipartFile**](MultipartFile.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/zip, application/x-tar, application/gzip, application/json, application/xml
 
 
 # **generateBody**

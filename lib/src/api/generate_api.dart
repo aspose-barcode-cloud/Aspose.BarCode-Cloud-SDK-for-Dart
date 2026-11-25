@@ -179,6 +179,56 @@ class GenerateApi {
   }
 
   ///
+  /// Generate multiple barcodes and return them in a ZIP, TAR, or TAR.GZ archive.
+  ///
+  Future<Uint8List> generateBatch(
+      BatchGenerateRequest batchGenerateRequest) async {
+    // ignore: prefer_final_locals
+    Object? postBody = batchGenerateRequest;
+
+    // create path and map variables
+    final String requestPath = "/barcode/generate-batch";
+
+    // query params
+    final List<QueryParam> queryParams = [];
+    final Map<String, String> headerParams = {};
+    final Map<String, String> formParams = {};
+
+    final List<String> contentTypes = ["application/json", "application/xml"];
+
+    final String contentType =
+        contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
+    final List<String> authNames = ["JWT"];
+
+    final response = await _apiClient.invokeAPI(
+        requestPath,
+        'POST',
+        queryParams,
+        postBody,
+        headerParams,
+        formParams,
+        contentType,
+        authNames);
+
+    if (response.statusCode >= 400) {
+      ApiErrorResponse error;
+      try {
+        error = _apiClient.deserialize(response.body, 'ApiErrorResponse');
+      } catch (e) {
+        throw ApiException(response.statusCode, response.body);
+      }
+      throw ApiException.withResponse(
+          response.statusCode,
+          response.reasonPhrase == null
+              ? "Api response error"
+              : response.reasonPhrase!,
+          error);
+    } else {
+      return response.bodyBytes;
+    }
+  }
+
+  ///
   /// Generate a barcode using a POST request with parameters in the request body in JSON or XML format.
   ///
   Future<Uint8List> generateBody(GenerateParams generateParams) async {

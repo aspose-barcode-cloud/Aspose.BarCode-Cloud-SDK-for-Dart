@@ -11,7 +11,7 @@ import 'api_helper.dart';
 import 'auth/authentication.dart';
 
 /// Current SDK Version
-const SDK_VERSION = "4.26.10";
+const SDK_VERSION = "4.26.11";
 
 /// ApiClient is responsible for making HTTP requests to the API.
 class ApiClient {
@@ -117,6 +117,12 @@ class ApiClient {
           return BarcodeResponse.fromJson(value);
         case 'BarcodeResponseList':
           return BarcodeResponseList.fromJson(value);
+        case 'BatchArchiveFormat':
+          return BatchArchiveFormat.fromJson(value);
+        case 'BatchGenerateItem':
+          return BatchGenerateItem.fromJson(value);
+        case 'BatchGenerateRequest':
+          return BatchGenerateRequest.fromJson(value);
         case 'Code128EncodeMode':
           return Code128EncodeMode.fromJson(value);
         case 'Code128Params':

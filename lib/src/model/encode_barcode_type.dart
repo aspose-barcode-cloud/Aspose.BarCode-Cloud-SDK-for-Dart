@@ -1,5 +1,5 @@
 /// See https://reference.aspose.com/barcode/net/aspose.barcode.generation/encodetypes/
-/// EncodeBarcodeType: [QR, AustraliaPost, AustralianPosteParcel, Aztec, Codabar, CodablockF, Code11, Code128, Code16K, Code32, Code39, Code39FullASCII, Code93, DataLogic2of5, DataMatrix, DatabarExpanded, DatabarExpandedStacked, DatabarLimited, DatabarOmniDirectional, DatabarStacked, DatabarStackedOmniDirectional, DatabarTruncated, DeutschePostIdentcode, DeutschePostLeitcode, DotCode, DutchKIX, EAN13, EAN14, EAN8, GS1Aztec, GS1CodablockF, GS1Code128, GS1DataMatrix, GS1DotCode, GS1HanXin, GS1MicroPdf417, GS1QR, HanXin, IATA2of5, ISBN, ISMN, ISSN, ITF14, ITF6, Interleaved2of5, ItalianPost25, MSI, MacroPdf417, Mailmark, Matrix2of5, MaxiCode, MicroPdf417, MicroQR, OPC, OneCode, PZN, PatchCode, Pdf417, Pharmacode, Planet, Postnet, RM4SCC, RectMicroQR, SCC14, SSCC18, SingaporePost, Standard2of5, SwissPostParcel, UPCA, UPCE, UpcaGs1Code128Coupon, UpcaGs1DatabarCoupon, VIN]
+/// EncodeBarcodeType: [QR, AustraliaPost, AustralianPosteParcel, Aztec, Codabar, CodablockF, Code11, Code128, Code16K, Code32, Code39, Code39FullASCII, Code93, DataLogic2of5, DataMatrix, DatabarExpanded, DatabarExpandedStacked, DatabarLimited, DatabarOmniDirectional, DatabarStacked, DatabarStackedOmniDirectional, DatabarTruncated, DeutschePostIdentcode, DeutschePostLeitcode, DotCode, DutchKIX, EAN13, EAN14, EAN8, GS1Aztec, GS1CodablockF, GS1Code128, GS1DataMatrix, GS1DotCode, GS1HanXin, GS1MicroPdf417, GS1QR, HanXin, IATA2of5, ISBN, ISMN, ISSN, ITF14, ITF6, Interleaved2of5, ItalianPost25, MSI, MacroPdf417, Mailmark, Matrix2of5, MaxiCode, MicroPdf417, MicroQR, OPC, OneCode, PZN, PatchCode, Pdf417, Pharmacode, Planet, Postnet, RM4SCC, RectMicroQR, SCC14, SSCC18, SingaporePost, Standard2of5, SwissPostParcel, UPCA, UPCE, UpcaGs1Code128Coupon, UpcaGs1DatabarCoupon, VIN, JapanPost]
 class EncodeBarcodeType {
   /// The underlying value of EncodeBarcodeType enum.
   late final String _value;
@@ -344,6 +344,11 @@ class EncodeBarcodeType {
   // ignore: non_constant_identifier_names
   static final EncodeBarcodeType VIN = EncodeBarcodeType._internal("VIN");
 
+  /// See https://reference.aspose.com/barcode/net/aspose.barcode.generation/encodetypes/
+  // ignore: non_constant_identifier_names
+  static final EncodeBarcodeType JapanPost =
+      EncodeBarcodeType._internal("JapanPost");
+
   /// Creates a EncodeBarcodeType instance from a JSON representation.
   EncodeBarcodeType.fromJson(dynamic data) {
     switch (data) {
@@ -420,6 +425,7 @@ class EncodeBarcodeType {
       case 'UpcaGs1Code128Coupon':
       case 'UpcaGs1DatabarCoupon':
       case 'VIN':
+      case 'JapanPost':
         _value = data;
         break;
       default:

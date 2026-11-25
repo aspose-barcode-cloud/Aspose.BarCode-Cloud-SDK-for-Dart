@@ -4,7 +4,7 @@
 [![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/aspose-barcode-cloud/test-coverage/main/dart/coverage-badge.json)](https://github.com/aspose-barcode-cloud/test-coverage)
 
 - API version: 4.0
-- SDK version: 4.26.10
+- SDK version: 4.26.11
 
 ## SDK and API Version Compatibility:
 
@@ -12,6 +12,18 @@
 - SDK Version 1.24.12 and Earlier: These versions are compatible with API Version v3.0.
 
 This SDK allows you to work with Aspose.BarCode for Cloud REST APIs in your Dart or Flutter applications quickly and easily
+
+## Batch Generation
+
+Generate one to three barcodes in a single request with the Generate API and
+`BatchGenerateRequest`. Choose `Zip` (the default), `Tar` or `TarGzip`
+for the returned binary archive. Each item contains generation parameters and an optional
+file name; the image format is independent of the file extension.
+
+[Save a batch as a ZIP archive](snippets/generate/batch/generate_batch.dart).
+The example reads `TEST_CONFIGURATION_ACCESS_TOKEN` from the environment.
+
+The barcode-type enums also include `JapanPost` for generation and recognition.
 
 ## Demo applications
 
@@ -44,7 +56,7 @@ Add this dependency to your *pubspec.yaml*:
 
 ```yaml
 dependencies:
-  aspose_barcode_cloud: 4.26.10
+  aspose_barcode_cloud: 4.26.11
 ```
 
 ## Sample usage
@@ -131,6 +143,7 @@ All URIs are relative to *<https://api.aspose.cloud/v4.0>*
 Class | Method | HTTP request | Description
 ----- | ------ | ------------ | -----------
 *GenerateApi* | [**generate**](doc/api/GenerateApi.md#generate) | **GET** /barcode/generate/{barcodeType} | Generate a barcode using a GET request with parameters in the route and query string.
+*GenerateApi* | [**generateBatch**](doc/api/GenerateApi.md#generatebatch) | **POST** /barcode/generate-batch | Generate multiple barcodes and return them in a ZIP, TAR, or TAR.GZ archive.
 *GenerateApi* | [**generateBody**](doc/api/GenerateApi.md#generatebody) | **POST** /barcode/generate-body | Generate a barcode using a POST request with parameters in the request body in JSON or XML format.
 *GenerateApi* | [**generateMultipart**](doc/api/GenerateApi.md#generatemultipart) | **POST** /barcode/generate-multipart | Generate a barcode using a POST request with parameters in a multipart form.
 *RecognizeApi* | [**recognize**](doc/api/RecognizeApi.md#recognize) | **GET** /barcode/recognize | Recognize a barcode from a file on an Internet server using a GET request with a query string parameter. For recognizing files from your hard drive, use &#x60;recognize-body&#x60; or &#x60;recognize-multipart&#x60; endpoints instead.
@@ -148,6 +161,9 @@ Class | Method | HTTP request | Description
 - [BarcodeImageParams](doc/models/BarcodeImageParams.md)
 - [BarcodeResponse](doc/models/BarcodeResponse.md)
 - [BarcodeResponseList](doc/models/BarcodeResponseList.md)
+- [BatchArchiveFormat](doc/models/BatchArchiveFormat.md)
+- [BatchGenerateItem](doc/models/BatchGenerateItem.md)
+- [BatchGenerateRequest](doc/models/BatchGenerateRequest.md)
 - [Code128EncodeMode](doc/models/Code128EncodeMode.md)
 - [Code128Params](doc/models/Code128Params.md)
 - [CodeLocation](doc/models/CodeLocation.md)
