@@ -92,4 +92,5 @@ See https://reference.aspose.com/barcode/net/aspose.barcode.barcoderecognition/d
 * DecodeBarcodeType.UPCA
 * DecodeBarcodeType.UPCE
 * DecodeBarcodeType.VIN
+* DecodeBarcodeType.japanPost
 

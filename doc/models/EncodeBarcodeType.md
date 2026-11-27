@@ -81,4 +81,5 @@ See https://reference.aspose.com/barcode/net/aspose.barcode.generation/encodetyp
 * EncodeBarcodeType.upcaGs1Code128Coupon
 * EncodeBarcodeType.upcaGs1DatabarCoupon
 * EncodeBarcodeType.VIN
+* EncodeBarcodeType.japanPost
 
